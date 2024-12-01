@@ -223,7 +223,7 @@ const Viewer3D = () => {
 								<CollapseIcon hoverable onClick={() => setExplodedMode(false)}>
 									<CollapseSolid />
 								</CollapseIcon>
-								<ExplodeIcon hoverable onClick={() => setExplodedMode(true)}>
+								<ExplodeIcon $isMobile={isMobile} hoverable onClick={() => setExplodedMode(true)}>
 									<ExplodeSolid />
 								</ExplodeIcon>
 							</>

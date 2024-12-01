@@ -112,6 +112,8 @@ interface MenuItemsContainerProps {
 	isRightArrowVisible: boolean;
 	onScrollChange: (value: number) => void;
 	scrollLeft: number;
+	displayFlex?: boolean;
+	height?: number;
 	children?: React.ReactNode;
 }
 
@@ -131,10 +133,10 @@ interface MenuItemProps {
 }
 
 // Styled component for the wrapper of menu items
-const MenuItemsWrapper = styled.div`
-	display: flex;
+const MenuItemsWrapper = styled.div <{ displayFlex?: boolean; height?: number, }>`
+	display: ${(props) => (props.displayFlex ? 'flex' : 'block')};
 	max-width: 100%;
-	min-height: 141px;
+	 min-height: ${(props) => (props.height !== undefined ? `${props.height}px` : '141px')};
 	width: 100%;
 	overflow-x: auto;
 	background-color: #ffffff;
@@ -194,6 +196,8 @@ export const MobileItemsContainer: FC<MenuItemsContainerProps> = ({
 	isLeftArrowVisible,
 	isRightArrowVisible,
 	onScrollChange,
+	displayFlex = true,
+	height = 141,
 	scrollLeft
 }) => {
 	const [showLeftArrow, setShowLeftArrow] = useState(false);
@@ -223,7 +227,7 @@ export const MobileItemsContainer: FC<MenuItemsContainerProps> = ({
 	}, []);
 
 	return (
-		<MenuItemsWrapper ref={ref}>
+		<MenuItemsWrapper ref={ref} displayFlex={displayFlex} height={height}>
 			{showLeftArrow && isLeftArrowVisible && (
 				<ArrowLeft>
 					<ArrowLeftIconStyled>

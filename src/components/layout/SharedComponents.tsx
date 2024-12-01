@@ -211,6 +211,7 @@ export const ZoomInIcon = styled(Icon)<{ $isMobile?: boolean }>`
 	width: 32px;
 	height: 32px;
 	z-index: 3;
+	display: ${(props) => (props.$isMobile ? 'none' : 'block')};
 	${(props) =>
 		props.$isMobile
 			? `
@@ -228,6 +229,7 @@ export const ZoomOutIcon = styled(Icon)<{ $isMobile?: boolean }>`
 	width: 32px;
 	height: 32px;
 	z-index: 3;
+	display: ${(props) => (props.$isMobile ? 'none' : 'block')};
 	${(props) =>
 		props.$isMobile
 			? `
@@ -245,6 +247,7 @@ export const ResetIcon = styled(Icon)<{ $isMobile?: boolean }>`
 	width: 27px;
 	height: 27px;
 	z-index: 3;
+	display: ${(props) => (props.$isMobile ? 'none' : 'block')};
 	${(props) =>
 		props.$isMobile
 			? `
@@ -263,6 +266,7 @@ export const UndoIcon = styled(Icon)<{ $isMobile?: boolean }>`
 	width: 27px;
 	height: 27px;
 	z-index: 3;
+	display: ${(props) => (props.$isMobile ? 'none' : 'block')};
 	${(props) =>
 		props.$isMobile
 			? `
@@ -281,6 +285,7 @@ export const RedoIcon = styled(Icon)<{ $isMobile?: boolean }>`
 	width: 27px;
 	height: 27px;
 	z-index: 3;
+	display: ${(props) => (props.$isMobile ? 'none' : 'block')};
 	${(props) =>
 		props.$isMobile
 			? `
@@ -298,9 +303,10 @@ export const CollapseIcon = styled(Icon)`
 	height: 32px;
 `;
 
-export const ExplodeIcon = styled(Icon)`
+export const ExplodeIcon = styled(Icon)<{ $isMobile?: boolean }>`
 	width: 32px;
 	height: 32px;
+	display: ${(props) => (props.$isMobile ? 'none' : 'block')};
 `;
 
 export const FullscreenIcon = styled(Icon)`

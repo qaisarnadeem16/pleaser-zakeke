@@ -425,7 +425,7 @@ const MobileMenu = () => {
 					))}
 				</TemplatesContainer>
 			)}
-			{selectedGroup && selectedGroup.name !== "PANEL" && (
+			{selectedGroup && (selectedGroup.name !== "PANEL" && selectedGroup.name !== "BOTTOM") && (
 				<MobileItemsContainer
 					isLeftArrowVisible
 					isRightArrowVisible
@@ -518,7 +518,7 @@ const MobileMenu = () => {
 
 
 
-			{selectedGroup && selectedGroup.name === "PANEL" && (
+			{selectedGroup && (selectedGroup.name === "PANEL" || selectedGroup.name === "BOTTOM") && (
 				<>
 					{/* Attributes */}
 					<MobileItemsContainer
@@ -526,6 +526,8 @@ const MobileMenu = () => {
 						isRightArrowVisible={false}
 						scrollLeft={attributesScroll ?? 0}
 						onScrollChange={(value) => setAttributesScroll(value)}
+						displayFlex={false}
+						height={0}
 					>
 						{selectedGroup &&
 							!selectedAttribute &&
@@ -534,8 +536,8 @@ const MobileMenu = () => {
 							currentItems.map((item) => {
 								if (!(item instanceof ThemeTemplateGroup)) {
 									return (
-										<div key={item.guid} style={{ padding: '.3rem' }}>
-											<div style={{ display: 'flex', gap: '1.5rem', padding: '.3rem' }}>
+										<div key={item.guid} style={{ padding: '.3rem',}}>
+											<div style={{ display: 'flex', gap: '.5rem', padding: '.3rem' }}>
 												{item.options.map((option) => {
 													const optionKey = `option-${option.guid}`;
 													const isSelected = option.selected; // Check if the option is selected
@@ -576,7 +578,7 @@ const MobileMenu = () => {
 					</MobileItemsContainer>
 
 					{/* Color Variant */}
-					<MobileItemsContainer
+					{/* <MobileItemsContainer
 						isLeftArrowVisible={true}
 						isRightArrowVisible={true}
 						scrollLeft={optionsScroll ?? 0}
@@ -614,7 +616,7 @@ const MobileMenu = () => {
 								/>
 							)
 						)}
-					</MobileItemsContainer>
+					</MobileItemsContainer> */}
 				</>
 			)}
 

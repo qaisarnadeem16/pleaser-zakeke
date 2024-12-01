@@ -293,7 +293,7 @@ const MobileMenu = () => {
 
 	useEffect(() => {
 		if (actualGroups.length > 0 && actualGroups[0]?.id) {
-			handleGroupSelection(actualGroups[0].id);
+			setSelectedGroupId(actualGroups[0]?.id);
 		}
 		// Dependencies include actualGroups
 	}, []);
@@ -341,9 +341,9 @@ const MobileMenu = () => {
 			handleOptionSelection(item.options[newIndex]);
 		}
 	};
-	console.log('currentItems', currentItems)
-	console.log('selectedAttribute', selectedAttribute)
-	console.log('selectOption', selectedAttribute)
+	// console.log('currentItems', currentItems)
+	// console.log('selectedAttribute', selectedAttribute)
+	// console.log('selectOption', selectedAttribute)
 	return (
 		<MobileMenuContainer>
 			{sellerSettings && sellerSettings.priceInfoText && (
@@ -355,14 +355,14 @@ const MobileMenu = () => {
 				{actualGroups.length > 0 && (
 					<div className="flex justify-center w-full items-center">
 						{/* Previous Button */}
-						{activeGroupIndex !== 0 && <button
+						<button
 							onClick={handlePreviousGroup}
 							disabled={activeGroupIndex === 0} // Disable if it's the first group
-							className="z-10"
+							className="z-10  "
 						>
-							<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 1L1 6.7037L7 12" stroke="black" stroke-linecap="round"></path><path d="M13 1.00049L7 6.70419L13 12.0005" stroke="black" stroke-width="2" stroke-linecap="round"></path></svg>
+							{activeGroupIndex !== 0 && <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 1L1 6.7037L7 12" stroke="black" stroke-linecap="round"></path><path d="M13 1.00049L7 6.70419L13 12.0005" stroke="black" stroke-width="2" stroke-linecap="round"></path></svg>}
 
-						</button>}
+						</button>
 
 						{/* Active Group */}
 						<div
@@ -377,13 +377,14 @@ const MobileMenu = () => {
 						</div>
 
 						{/* Next Button */}
-						{activeGroupIndex !== actualGroups.length - 1 &&
-							<button
-								onClick={handleNextGroup}
-								disabled={activeGroupIndex === actualGroups.length - 1} // Disable if it's the last group
-								className=" z-10"
-							><svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 1L13 6.7037L7 12" stroke="black" stroke-linecap="round"></path><path d="M1 1.00049L7 6.70419L1 12.0005" stroke="black" stroke-width="2" stroke-linecap="round"></path></svg>
-							</button>}
+						<button
+							onClick={handleNextGroup}
+							disabled={activeGroupIndex === actualGroups.length - 1} // Disable if it's the last group
+							className=" z-10"
+						>
+							{activeGroupIndex !== actualGroups.length - 1 &&
+								<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 1L13 6.7037L7 12" stroke="black" stroke-linecap="round"></path><path d="M1 1.00049L7 6.70419L1 12.0005" stroke="black" stroke-width="2" stroke-linecap="round"></path></svg>}
+						</button>
 					</div>
 				)}
 			</div>

@@ -202,6 +202,7 @@ export const ViewerContainer = styled.div`
 
 	@media (max-width: 1024px) {
 		/* height: 100%; */
+		padding-bottom: 10px;
 	max-height: 70vh;
 
 	}

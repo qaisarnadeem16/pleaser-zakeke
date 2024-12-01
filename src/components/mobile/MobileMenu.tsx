@@ -409,6 +409,8 @@ const MobileMenu = () => {
 			</MobileItemsContainer2> */}
 
 
+
+
 			{/* <AttributesContainer > */}
 			{selectedGroup && selectedGroup.id === -2 && templates.length > 1 && (
 				<TemplatesContainer>
@@ -536,7 +538,7 @@ const MobileMenu = () => {
 							currentItems.map((item) => {
 								if (!(item instanceof ThemeTemplateGroup)) {
 									return (
-										<div key={item.guid} style={{ padding: '.3rem',}}>
+										<div key={item.guid} style={{ padding: '.3rem', }}>
 											<div style={{ display: 'flex', gap: '.5rem', padding: '.3rem' }}>
 												{item.options.map((option) => {
 													const optionKey = `option-${option.guid}`;

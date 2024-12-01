@@ -16,7 +16,7 @@ import TemplateGroup from 'components/TemplateGroup';
 
 import { ReactComponent as ArrowLeftIcon } from '../../assets/icons/arrow-left-solid.svg';
 import { ReactComponent as ArrowRightIcon } from '../../assets/icons/arrow-right-solid.svg';
-import { MenuItem2, MobileItemsContainer2 } from './top-menu';
+import { MenuItem2 } from './sub-menu-item';
 
 // Styled component for the container of the mobile menu
 export const MobileMenuContainer = styled.div`
@@ -324,7 +324,24 @@ const MobileMenu = () => {
 		}
 	};
 
-	console.log('selectedGroup', selectedGroup)
+	const [activeIndex, setActiveIndex] = useState(0);
+
+	const handlePrevious = (item: any) => {
+		if (activeIndex > 0) {
+			const newIndex = activeIndex - 1;
+			setActiveIndex(newIndex);
+			handleOptionSelection(item.options[newIndex]);
+		}
+	};
+
+	const handleNext = (item: any) => {
+		if (activeIndex < item.options?.length - 1) {
+			const newIndex = activeIndex + 1;
+			setActiveIndex(newIndex);
+			handleOptionSelection(item.options[newIndex]);
+		}
+	};
+	console.log('currentItems', currentItems)
 	console.log('selectedAttribute', selectedAttribute)
 	console.log('selectOption', selectedAttribute)
 	return (
@@ -352,7 +369,7 @@ const MobileMenu = () => {
 							key={actualGroups[activeGroupIndex].guid}
 							className=" py-2 px-5 flex justify-center items-center"
 						>
-							<button onClick={() => handleGroupSelection(actualGroups[activeGroupIndex].id)} className="text-lg font-semibold text-black leading-relaxed tracking-wide">
+							<button onClick={() => handleGroupSelection(actualGroups[activeGroupIndex].id)} className="text-xl font-bold text-black leading-relaxed tracking-wide">
 								{actualGroups[activeGroupIndex].name
 									? T._d(actualGroups[activeGroupIndex].name)
 									: T._('Customize', 'Composer')}
@@ -523,14 +540,8 @@ const MobileMenu = () => {
 			{selectedGroup && (selectedGroup.name === "PANEL" || selectedGroup.name === "BOTTOM") && (
 				<>
 					{/* Attributes */}
-					<MobileItemsContainer
-						isLeftArrowVisible={false}
-						isRightArrowVisible={false}
-						scrollLeft={attributesScroll ?? 0}
-						onScrollChange={(value) => setAttributesScroll(value)}
-						displayFlex={false}
-						height={0}
-					>
+					<>
+
 						{selectedGroup &&
 							!selectedAttribute &&
 							!selectedTemplateGroupId &&
@@ -538,28 +549,135 @@ const MobileMenu = () => {
 							currentItems.map((item) => {
 								if (!(item instanceof ThemeTemplateGroup)) {
 									return (
-										<div key={item.guid} style={{ padding: '.3rem', }}>
-											<div style={{ display: 'flex', gap: '.5rem', padding: '.3rem' }}>
-												{item.options.map((option) => {
-													const optionKey = `option-${option.guid}`;
-													const isSelected = option.selected; // Check if the option is selected
-													return (
-														<div key={option.guid}>
-															<MenuItem
-																key={optionKey}
-																isRound={item.optionShapeType === 2}
-																description={option.description}
-																selected={isSelected}
-																imageUrl={option.imageUrl ?? noImage}
-																label={T._d(option.name)}
-																onClick={() => handleOptionSelection(option)}
-																hideLabel={item.optionShapeType === 2 ? item.hideOptionsLabel : true}
+
+										<div key={item.guid} >
+											{item.name === "Color Variant" ?
+												<MobileItemsContainer
+													isLeftArrowVisible
+													isRightArrowVisible
+													scrollLeft={attributesScroll ?? 0}
+													onScrollChange={(value) => setAttributesScroll(value)}
+												>
+													<div style={{ display: 'flex', gap: '.5rem', padding: '.3rem' }} className=' w-full'>
+														{item.options.map((option) => {
+															const optionKey = `option-${option.guid}`;
+															const isSelected = option.selected; // Check if the option is selected
+															return (
+																<div key={option.guid}>
+																	<MenuItem
+																		key={optionKey}
+																		isRound={item.optionShapeType === 2}
+																		description={option.description}
+																		selected={isSelected}
+																		imageUrl={option.imageUrl ?? noImage}
+																		label={T._d(option.name)}
+																		onClick={() => handleOptionSelection(option)}
+																		hideLabel={item.hideOptionsLabel}
+																	/>
+																</div>
+															);
+														})}
+													</div>
+												</MobileItemsContainer>
+												:
+												<div className='max-w-full overflow-x-hidden px-5 bg-white  flex justify-center  items-center'>
+													{/* Previous Button */}
+													<button
+														onClick={() => handlePrevious(item)}
+														disabled={activeIndex === 0}
+														className="z-10 pr-10"
+													>
+														<svg version="1.1" x="0px" y="0px" width="19" height="25" viewBox="0 0 10 15">
+															<path d="M7,12L1,6.3L7,1" fill="none" stroke="rgb(0, 0, 0)" stroke-linecap="round"></path>
+														</svg>
+
+													</button>
+
+													<div style={{ display: "flex", gap: ".5rem", padding: ".3rem" }}>
+														{/* Display only the selected option */}
+														{activeIndex !== 0 && <div
+															className={`flex flex-col gap-2 justify-center`}
+															style={{
+																padding: "0.5rem",
+																textAlign: "center",
+															}}
+														>
+															<img
+																src={item.options[activeIndex - 1].imageUrl ?? noImage}
+																alt={item.options[activeIndex - 1].name}
+																className={`w-12 h-12 rounded-full `}
 															/>
+															<p className="text-sm font-medium">{item.options[activeIndex - 1].name}</p>
+														</div>}
+													</div>
+
+													{/* Option Display */}
+													<div style={{ display: "flex", gap: ".5rem", padding: ".3rem" }}>
+														{/* Display only the selected option */}
+														<div
+															className={`flex flex-col gap-2 justify-center`}
+															style={{
+																padding: "0.5rem",
+																textAlign: "center",
+															}}
+														>
+															<img
+																src={item.options[activeIndex].imageUrl ?? noImage}
+																alt={item.options[activeIndex].name}
+																className={`w-[56px] h-[54px] rounded-full ${item.options[activeIndex].selected ? " border-[7px] border-black" : ""
+																	}`}
+															/>
+															<p className="text-sm font-medium">{item.options[activeIndex].name}</p>
 														</div>
-													);
-												})}
-											</div>
+													</div>
+
+													<div style={{ display: "flex", gap: ".5rem", padding: ".3rem" }}>
+														{/* Display only the selected option */}
+														<div
+															className={`flex flex-col gap-2 justify-center`}
+															style={{
+																padding: "0.5rem",
+																textAlign: "center",
+															}}
+														>
+															<img
+																src={item.options[activeIndex + 1].imageUrl ?? noImage}
+																alt={item.options[activeIndex + 1].name}
+																className={`w-12 h-12 rounded-full `}
+															/>
+															<p className="text-sm font-medium">{item.options[activeIndex + 1].name}</p>
+														</div>
+													</div>
+
+													{/* Next Button */}
+													<button
+														onClick={() => handleNext(item)}
+														disabled={activeIndex === item.options.length - 1}
+														className="z-10 pl-10 pb-2"
+													>
+														<svg
+															version="1.1"
+															id="Livello_1"
+															xmlns="http://www.w3.org/2000/svg"
+															x="0px"
+															y="0px"
+															width="15"
+															height="20"
+															viewBox="0 0 8 13"
+														>
+															<path
+																d="M1,12l6-5.7L1,1"
+																fill="none"
+																stroke="black"
+																stroke-linecap="round"
+															></path>
+														</svg>
+													</button>
+												</div>
+
+											}
 										</div>
+
 									);
 								} else {
 									return (
@@ -577,7 +695,17 @@ const MobileMenu = () => {
 									);
 								}
 							})}
-					</MobileItemsContainer>
+
+					</>
+					{/* <MenuItem2
+																	key={optionKey}
+																	isRound={item.optionShapeType === 2}
+																	description={option.description}
+																	selected={isSelected}
+																	imageUrl={option.imageUrl ?? noImage}
+																	label={T._d(option.name)}
+																	onClick={() => handleOptionSelection(option)}
+																	hideLabel={item.optionShapeType === 2 ? item.hideOptionsLabel : true} /> */}
 
 					{/* Color Variant */}
 					{/* <MobileItemsContainer

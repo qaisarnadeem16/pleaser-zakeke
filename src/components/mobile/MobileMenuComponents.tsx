@@ -11,16 +11,16 @@ import noImage from '../../assets/images/no_image.png';
 export const MobileItemContainer = styled.div<{ selected?: boolean }>`
 	align-items: center;
 	justify-content: center;
-	min-width: 140px;
-	max-width: 140px;
-	width: 140px;
-	height: 140px;
-	min-height: 140px;
-	max-height: 140px;
+	min-width: 110px;
+	max-width: 110px;
+	width: 110px;
+	height: 120px;
+	min-height: 120px;
+	max-height: 120px;
 	flex: 1;
 	display: flex;
 	flex-direction: column;
-	border-right: 2px #fff solid;
+	/* border-right: 2px #fff solid; */
 	position: relative;
 	${(props) => props.selected && `background-color: #f7f7f7;`}
 `;
@@ -157,8 +157,8 @@ const MenuItemsWrapper = styled.div <{ displayFlex?: boolean; height?: number, }
 const ArrowCss = css`
 	position: absolute;
 	left: 10px;
-	bottom: 60px;
-	background-color: #f1f1f1;
+	bottom: 65px;
+	/* background-color: #f1f1f1; */
 	border-radius: 30px;
 	width: 32px;
 	height: 32px;
@@ -197,7 +197,7 @@ export const MobileItemsContainer: FC<MenuItemsContainerProps> = ({
 	isRightArrowVisible,
 	onScrollChange,
 	displayFlex = true,
-	height = 141,
+	height = 131,
 	scrollLeft
 }) => {
 	const [showLeftArrow, setShowLeftArrow] = useState(false);
@@ -231,9 +231,13 @@ export const MobileItemsContainer: FC<MenuItemsContainerProps> = ({
 			{showLeftArrow && isLeftArrowVisible && (
 				<ArrowLeft>
 					<ArrowLeftIconStyled>
-						<ArrowLeftIcon />
+						{/* <ArrowLeftIcon /> */}
+						<svg version="1.1" x="0px" y="0px" width="19" height="25" viewBox="0 0 10 15">
+							<path d="M7,12L1,6.3L7,1" fill="none" stroke="rgb(0, 0, 0)" stroke-linecap="round"></path>
+						</svg>
 					</ArrowLeftIconStyled>
 				</ArrowLeft>
+
 			)}
 
 			{/* Content */}
@@ -242,9 +246,27 @@ export const MobileItemsContainer: FC<MenuItemsContainerProps> = ({
 			{showRightArrow && isRightArrowVisible && (
 				<ArrowRight>
 					<ArrowRightIconStyled>
-						<ArrowRightIcon />
+						{/* <ArrowRightIcon /> */}
+						<svg
+							version="1.1"
+							id="Livello_1"
+							xmlns="http://www.w3.org/2000/svg"
+							x="0px"
+							y="0px"
+							width="15"
+							height="20"
+							viewBox="0 0 8 13"
+						>
+							<path
+								d="M1,12l6-5.7L1,1"
+								fill="none"
+								stroke="black"
+								stroke-linecap="round"
+							></path>
+						</svg>
 					</ArrowRightIconStyled>
 				</ArrowRight>
+
 			)}
 		</MenuItemsWrapper>
 	);
@@ -277,7 +299,7 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
 					))}
 				</MenuItemImagesWrapper>
 			)}
-			{!props.hideLabel && <MenuItemLabel>{props.label}</MenuItemLabel>}
+			{!props.hideLabel && <MenuItemLabel>{props.label?.slice(0, 7)}</MenuItemLabel>}
 		</MobileItemContainer>
 	);
 };

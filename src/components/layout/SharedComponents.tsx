@@ -201,11 +201,13 @@ export const ViewerContainer = styled.div`
 	min-height: 0;
 
 	@media (max-width: 1024px) {
-		height: 100%;
+		/* height: 100%; */
+	max-height: 70vh;
+
 	}
 `;
 
-export const ZoomInIcon = styled(Icon)<{ $isMobile?: boolean }>`
+export const ZoomInIcon = styled(Icon) <{ $isMobile?: boolean }>`
 	position: absolute;
 	left: 20px;
 	width: 32px;
@@ -223,7 +225,7 @@ export const ZoomInIcon = styled(Icon)<{ $isMobile?: boolean }>`
 	}
 `;
 
-export const ZoomOutIcon = styled(Icon)<{ $isMobile?: boolean }>`
+export const ZoomOutIcon = styled(Icon) <{ $isMobile?: boolean }>`
 	position: absolute;
 	left: 20px;
 	width: 32px;
@@ -241,7 +243,7 @@ export const ZoomOutIcon = styled(Icon)<{ $isMobile?: boolean }>`
 	}
 `;
 
-export const ResetIcon = styled(Icon)<{ $isMobile?: boolean }>`
+export const ResetIcon = styled(Icon) <{ $isMobile?: boolean }>`
 	position: absolute;
 	left: 20px;
 	width: 27px;
@@ -260,7 +262,7 @@ export const ResetIcon = styled(Icon)<{ $isMobile?: boolean }>`
 	}
 `;
 
-export const UndoIcon = styled(Icon)<{ $isMobile?: boolean }>`
+export const UndoIcon = styled(Icon) <{ $isMobile?: boolean }>`
 	position: absolute;
 	left: 20px;
 	width: 27px;
@@ -279,7 +281,7 @@ export const UndoIcon = styled(Icon)<{ $isMobile?: boolean }>`
 	}
 `;
 
-export const RedoIcon = styled(Icon)<{ $isMobile?: boolean }>`
+export const RedoIcon = styled(Icon) <{ $isMobile?: boolean }>`
 	position: absolute;
 	left: 20px;
 	width: 27px;
@@ -303,7 +305,7 @@ export const CollapseIcon = styled(Icon)`
 	height: 32px;
 `;
 
-export const ExplodeIcon = styled(Icon)<{ $isMobile?: boolean }>`
+export const ExplodeIcon = styled(Icon) <{ $isMobile?: boolean }>`
 	width: 32px;
 	height: 32px;
 	display: ${(props) => (props.$isMobile ? 'none' : 'block')};
@@ -373,7 +375,7 @@ export const ArIcon = styled(ArSolid)`
 	}
 `;
 
-export const AiIcon = styled(AISolid)<{ $isArIconVisible?: boolean }>`
+export const AiIcon = styled(AISolid) <{ $isArIconVisible?: boolean }>`
 	width: 32px;
 	height: 32px;
 	cursor: pointer;

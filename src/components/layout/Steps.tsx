@@ -140,7 +140,6 @@ export const Steps: FC<{
                     </button>}
                 {steps && (steps.length < maxItems ? steps : rangeOfSteps).map((step, index) => {
                     return <React.Fragment key={step.id}>
-
                         <StepItem
                             isMobile={isMobile}
                             key={step.id}

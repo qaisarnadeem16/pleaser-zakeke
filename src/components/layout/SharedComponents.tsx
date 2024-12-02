@@ -630,15 +630,6 @@ export const FooterMobileIcon = styled.div<{
 		position:absolute;
 		bottom:1rem;
 		`};
-	${(props) =>
-		props.isPrice &&
-		`
-        display: flex;
-        flex-direction: column-reverse;
-        align-items: top;
-        justify-content: top;
-		padding:5px;
-		`};
 
 	${(props) =>
 		props.disabled &&
@@ -659,47 +650,46 @@ export const FooterPriceIcon = styled.div<{
 	isSaved?: boolean;
 	disabled?: boolean;
 	gridArea?: string;
+	$isMobile?: boolean;
 	isPrice?: boolean;
 }>`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: ${(props) => (props.isPrice ? 'fixed' : 'static')}; /* Use fixed for positioning */
-	top: ${(props) => (props.isPrice ? '20px' : 'auto')}; /* Place at the top */
-	left: ${(props) => (props.isPrice ? '10px' : 'auto')}; /* Place at the left */  
-	color: ${(props) => (props.color ? props.color : `#313c46`)};
-	font-size: 14px;
-	text-transform: uppercase;
-	text-align: center;
-	display: inline-flex;
-	min-height: 38px;
-	cursor: pointer;
-	flex-direction: column;
-	font-weight: bold !important;
-	z-index: 1001; /* Ensure it stays above other elements */
-	svg {
-	  fill: ${(props) => props.iconColor && `${props.iconColor}`};
-	  width: 32px;
-	  height: 32px;
-	}
+	display: none; /* Hide by default */
   
-	${(props) => props.isHidden && `visibility: hidden;`};
+	@media (max-width: 768px) { /* Adjust breakpoint as needed for mobile */
+	  display: flex; /* Display only on mobile screens */
+	  align-items: center;
+	  justify-content: center;
+	  position: ${(props) => (props.isPrice ? 'fixed' : 'static')};
+	  top: ${(props) => (props.isPrice ? '20px' : 'auto')};
+	  left: ${(props) => (props.isPrice ? '10px' : 'auto')};
+	  color: ${(props) => (props.color ? props.color : `#313c46`)};
+	  font-size: 14px;
+	  text-transform: uppercase;
+	  text-align: center;
+	  min-height: 38px;
+	  cursor: pointer;
+	  flex-direction: column;
+	  font-weight: bold !important;
+	  z-index: 1001;
+	  
+	  svg {
+		fill: ${(props) => props.iconColor && `${props.iconColor}`};
+		width: 32px;
+		height: 32px;
+	  }
   
-	${(props) =>
-		props.isPrice && `
-		  padding: 5px;
-		  border-top: 2px black solid;
-		  display:flex;
-	`};
+	  ${(props) => props.isPrice && `
+		padding: 5px;
+		border-top: 2px black solid;
+	  `};
   
-	${(props) =>
-		props.disabled &&
-		`
+	  ${(props) => props.disabled && `
 		background-color: lightgray;
 		border: 1px solid gray;
 		color: #313c46;
-	`}
+	  `};
   
-	${(props) => props.gridArea && `grid-area:${props.gridArea}`};
+	  ${(props) => props.gridArea && `grid-area:${props.gridArea}`};
+	}
   `;
 

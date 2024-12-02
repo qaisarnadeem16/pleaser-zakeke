@@ -527,12 +527,12 @@ const Viewer3D = () => {
 						</FooterMobileIcon>
 					)} */}
 					</FooterMobileContainer>
-					<FooterPriceIcon isPrice color='black'>
+					<FooterPriceIcon $isMobile={isMobile} isPrice color='black'>
 						{/* {!isOutOfStock &&
 								price !== null &&
 								price > 0 &&
 								(!sellerSettings || !sellerSettings.hidePrice) && ( */}
-						<PriceContainer style={{ fontSize: '18px', color: 'black', display:'flex',  }} $isMobile={isMobile}>
+						<PriceContainer  style={{ fontSize: '18px', color: 'black', display:'flex',  }} $isMobile={isMobile}>
 						<DownArrow style={{
 								height: '24px',
 								width: '24px',

@@ -136,7 +136,6 @@ export const Steps: FC<{
                         {actualStepIndex !== 0 &&
                             <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 1L1 6.7037L7 12" stroke="black" stroke-linecap="round"></path><path d="M13 1.00049L7 6.70419L13 12.0005" stroke="black" stroke-width="2" stroke-linecap="round"></path></svg>}
 
-
                     </button>}
                 {steps && (steps.length < maxItems ? steps : rangeOfSteps).map((step, index) => {
                     return <React.Fragment key={step.id}>

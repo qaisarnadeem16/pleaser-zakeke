@@ -11,12 +11,12 @@ import noImage from '../../assets/images/no_image.png';
 export const MobileItemContainer = styled.div<{ selected?: boolean }>`
 	align-items: center;
 	justify-content: center;
-	min-width: 110px;
-	max-width: 110px;
-	width: 110px;
-	height: 120px;
-	min-height: 120px;
-	max-height: 120px;
+	min-width: 90px;
+	max-width: 90px;
+	width: 90px;
+	height: 90px;
+	min-height: 90px;
+	max-height: 90px;
 	flex: 1;
 	display: flex;
 	flex-direction: column;
@@ -30,7 +30,7 @@ export const MenuItemImage = styled.img<{ isRound?: boolean }>`
 	width: 64px;
 	height: 64px;
 	object-fit: ${(props) => (props.isRound ? 'cover' : 'contain')};
-	margin-bottom: 20px;
+	/* margin-bottom: 20px; */
 	border-radius: ${(props) => (props.isRound ? '64px!important' : '0')};
 `;
 
@@ -62,10 +62,10 @@ export const MenuItemImagesImageWrapper = styled.div`
 
 // Styled component for the label of each menu item
 export const MenuItemLabel = styled.span`
-	font-size: 8px;
+	font-size: 8px!important;
 	font-weight: 400;
 	position: relative;
-	bottom: 20px;
+	/* bottom: 20px; */
 	left: 0;
 	right: 0;
 	text-align: center;
@@ -136,7 +136,7 @@ interface MenuItemProps {
 const MenuItemsWrapper = styled.div <{ displayFlex?: boolean; height?: number, }>`
 	display: ${(props) => (props.displayFlex ? 'flex' : 'block')};
 	max-width: 100%;
-	 min-height: ${(props) => (props.height !== undefined ? `${props.height}px` : '141px')};
+	 min-height: ${(props) => (props.height !== undefined ? `${props.height}px` : '100px')};
 	width: 100%;
 	overflow-x: auto;
 	background-color: #ffffff;
@@ -157,7 +157,7 @@ const MenuItemsWrapper = styled.div <{ displayFlex?: boolean; height?: number, }
 const ArrowCss = css`
 	position: absolute;
 	left: 10px;
-	bottom: 65px;
+	bottom: 35px;
 	/* background-color: #f1f1f1; */
 	border-radius: 30px;
 	width: 32px;
@@ -197,7 +197,7 @@ export const MobileItemsContainer: FC<MenuItemsContainerProps> = ({
 	isRightArrowVisible,
 	onScrollChange,
 	displayFlex = true,
-	height = 131,
+	height = 100,
 	scrollLeft
 }) => {
 	const [showLeftArrow, setShowLeftArrow] = useState(false);

@@ -201,9 +201,9 @@ export const ViewerContainer = styled.div`
 	min-height: 0;
 
 	@media (max-width: 1024px) {
-		/* height: 100%; */
-		padding-bottom: 10px;
-	max-height: 70vh;
+		height: 100%;
+		/* padding-bottom: 10px; */
+	/* max-height: 70vh; */
 
 	}
 `;
@@ -617,7 +617,9 @@ export const FooterMobileIcon = styled.div<{
         align-items: end;
         justify-content: end;
 		padding:5px;
-		position:fixed;
+		position:absolute;
+		bottom:.5rem;
+
 		`};
 	${(props) =>
 		props.isSaved &&
@@ -628,7 +630,7 @@ export const FooterMobileIcon = styled.div<{
         justify-content: end;
 		padding:5px;
 		position:absolute;
-		bottom:1rem;
+		bottom:3.2rem;
 		`};
 
 	${(props) =>

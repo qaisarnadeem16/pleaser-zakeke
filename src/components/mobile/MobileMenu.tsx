@@ -367,7 +367,7 @@ const MobileMenu = () => {
 						{/* Active Group */}
 						<div
 							key={actualGroups[activeGroupIndex].guid}
-							className=" py-2 px-5 flex justify-center items-center"
+							className="  px-5 flex justify-center items-center"
 						>
 							<button onClick={() => handleGroupSelection(actualGroups[activeGroupIndex].id)} className="text-xl font-bold text-black leading-relaxed tracking-wide">
 								{actualGroups[activeGroupIndex].name
@@ -559,7 +559,7 @@ const MobileMenu = () => {
 													scrollLeft={attributesScroll ?? 0}
 													onScrollChange={(value) => setAttributesScroll(value)}
 												>
-													<div style={{ display: 'flex', gap: '.5rem', padding: '.3rem' }} className=' w-full'>
+													<div style={{ display: 'flex', gap: '.5rem', padding: '0 .3rem' }} className=' w-full'>
 														{item.options.map((option) => {
 															const optionKey = `option-${option.guid}`;
 															const isSelected = option.selected; // Check if the option is selected
@@ -587,7 +587,7 @@ const MobileMenu = () => {
 														onClick={() => handlePrevious(item)}
 														disabled={activeIndex === 0}
 														className="z-10 mr-5 mb-4 bg-slate-200 h-8 w-8 flex items-center justify-center  rounded-full"
-													> 
+													>
 														<svg version="1.1" x="0px" y="0px" width="19" height="20" viewBox="0 0 10 15">
 															<path d="M7,12L1,6.3L7,1" fill="none" stroke="rgb(0, 0, 0)" stroke-linecap="round"></path>
 														</svg>
@@ -599,7 +599,6 @@ const MobileMenu = () => {
 														{activeIndex !== 0 && <div
 															className={`flex flex-col gap-2 justify-center`}
 															style={{
-																padding: "0.5rem",
 																textAlign: "center",
 															}}
 														>
@@ -608,7 +607,7 @@ const MobileMenu = () => {
 																alt={item.options[activeIndex - 1].name}
 																className={`w-12 h-12 rounded-full `}
 															/>
-															<p className="text-sm font-medium">{item.options[activeIndex - 1].name}</p>
+															<p className="text-xs">{item.options[activeIndex - 1].name}</p>
 														</div>}
 													</div>
 
@@ -618,17 +617,16 @@ const MobileMenu = () => {
 														<div
 															className={`flex flex-col gap-2 justify-center`}
 															style={{
-																padding: "0.5rem",
 																textAlign: "center",
 															}}
 														>
 															<img
 																src={item.options[activeIndex].imageUrl ?? noImage}
 																alt={item.options[activeIndex].name}
-																className={`w-[56px] h-[54px] rounded-full ${item.options[activeIndex].selected ? " border-[7px] border-black" : ""
+																className={`w-12 h-12 rounded-full ${item.options[activeIndex].selected ? " border-[7px] border-black" : ""
 																	}`}
 															/>
-															<p className="text-sm font-medium">{item.options[activeIndex].name}</p>
+															<p className="text-xs">{item.options[activeIndex].name}</p>
 														</div>
 													</div>
 
@@ -637,7 +635,6 @@ const MobileMenu = () => {
 														<div
 															className={`flex flex-col gap-2 justify-center`}
 															style={{
-																padding: "0.5rem",
 																textAlign: "center",
 															}}
 														>
@@ -646,7 +643,7 @@ const MobileMenu = () => {
 																alt={item.options[activeIndex + 1].name}
 																className={`w-12 h-12 rounded-full `}
 															/>
-															<p className="text-sm font-medium">{item.options[activeIndex + 1].name}</p>
+															<p className="text-xs">{item.options[activeIndex + 1].name}</p>
 														</div>
 													</div>
 

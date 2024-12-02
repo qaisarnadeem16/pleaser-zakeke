@@ -532,8 +532,8 @@ const Viewer3D = () => {
 								price !== null &&
 								price > 0 &&
 								(!sellerSettings || !sellerSettings.hidePrice) && ( */}
-						<PriceContainer  style={{ fontSize: '18px', color: 'black', display:'flex',  }} $isMobile={isMobile}>
-						<DownArrow style={{
+						<PriceContainer style={{ fontSize: '18px', color: 'black', display: 'flex', }} $isMobile={isMobile}>
+							<DownArrow style={{
 								height: '24px',
 								width: '24px',
 								paddingTop: '4px'
@@ -606,7 +606,7 @@ const Viewer3D = () => {
 							hoverable
 							onClick={switchFullscreenArrows}
 						>
-							{isFullscreen ? <ArrowUpSimple /> : <ArrowDownSimple />}
+							{/* {isFullscreen ? <ArrowUpSimple /> : <ArrowDownSimple />} */}
 						</FullscreenArrowIcon>
 					)}
 					<TopRightIcons $isMobile={isMobile}>

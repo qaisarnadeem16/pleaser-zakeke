@@ -11,8 +11,8 @@ import useStore from "Store";
 
 const ArrowIcons = styled(Icon) <{ isRight?: boolean }>`
     position:absolute;
-    top:5px;
-    ${props => props.isRight ? `right:-5px;` : `left:-5px;`}
+    top:43px;
+    ${props => props.isRight ? `right:45px;` : `left:72%;`}
 `;
 
 const StepsIcons = styled.div<{ isMobile?: boolean }>`
@@ -39,7 +39,7 @@ const StepItem = styled.div <{ selected?: boolean, isMobile?: boolean, stepName?
   font-weight: 500;
   z-index: 2;
   position: relative;
-  display: flex;
+  display: ${(props) => (props.isMobile ? 'none' : 'flex')};
   align-items: center;
   font-size: 18px;
   justify-content:center;
@@ -75,7 +75,8 @@ const StepItem = styled.div <{ selected?: boolean, isMobile?: boolean, stepName?
 const ActualStepName = styled.h4<{ isMobile?: boolean }>`
     text-align: center;
     margin: 0;
-    ${props => !props.isMobile && `margin-top: 15px`};
+    ${props => !props.isMobile && `margin-top: 10px`};
+    ${props => !props.isMobile && `margin-bottom: 15px`};
     font-weight: 500;
     color: #313c46;
     ${props => props.isMobile && `
@@ -126,7 +127,7 @@ export const Steps: FC<{
             }
             // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [steps, currentStep]);
-        return <div className="flex justify-center items-center w-full">
+        return <div className="md:flex-col flex-row flex justify-center items-center w-full">
             {(!(actualStepIndex === 0) || hasPreviousGroup) && !isMobile && <ArrowIcons onClick={handlePreviousClick}><LeftArrow /></ArrowIcons>}
 
             <StepsIcons isMobile={isMobile}>
@@ -140,14 +141,14 @@ export const Steps: FC<{
                 {steps && (steps.length < maxItems ? steps : rangeOfSteps).map((step, index) => {
                     return <React.Fragment key={step.id}>
 
-                        {/* <StepItem
+                        <StepItem
                             isMobile={isMobile}
                             key={step.id}
                             onClick={() => onStepChange(step)}
                             selected={step.id === currentStep?.id}
                         >
                             <span>{(steps.indexOf(step) + 1)}</span>
-                        </StepItem> */}
+                        </StepItem>
                         {currentStep && step.id === currentStep?.id && isMobile && <h2 className="text-base font-semibold" >{currentStep.name}</h2>}
                     </React.Fragment>
                 })

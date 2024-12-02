@@ -230,12 +230,14 @@ export const MobileItemsContainer: FC<MenuItemsContainerProps> = ({
 		<MenuItemsWrapper ref={ref} displayFlex={displayFlex} height={height}>
 			{showLeftArrow && isLeftArrowVisible && (
 				<ArrowLeft>
-					<ArrowLeftIconStyled>
-						{/* <ArrowLeftIcon /> */}
-						<svg version="1.1" x="0px" y="0px" width="19" height="25" viewBox="0 0 10 15">
-							<path d="M7,12L1,6.3L7,1" fill="none" stroke="rgb(0, 0, 0)" stroke-linecap="round"></path>
-						</svg>
-					</ArrowLeftIconStyled>
+					<div className="bg-slate-200 h-8 w-8 flex items-center justify-center  rounded-full">
+						<ArrowLeftIconStyled>
+							{/* <ArrowLeftIcon /> */}
+							<svg version="1.1" x="0px" y="0px" width="19" height="20" viewBox="0 0 10 15">
+								<path d="M7,12L1,6.3L7,1" fill="none" stroke="rgb(0, 0, 0)" stroke-linecap="round"></path>
+							</svg>
+						</ArrowLeftIconStyled>
+					</div>
 				</ArrowLeft>
 
 			)}
@@ -245,26 +247,28 @@ export const MobileItemsContainer: FC<MenuItemsContainerProps> = ({
 
 			{showRightArrow && isRightArrowVisible && (
 				<ArrowRight>
-					<ArrowRightIconStyled>
-						{/* <ArrowRightIcon /> */}
-						<svg
-							version="1.1"
-							id="Livello_1"
-							xmlns="http://www.w3.org/2000/svg"
-							x="0px"
-							y="0px"
-							width="15"
-							height="20"
-							viewBox="0 0 8 13"
-						>
-							<path
-								d="M1,12l6-5.7L1,1"
-								fill="none"
-								stroke="black"
-								stroke-linecap="round"
-							></path>
-						</svg>
-					</ArrowRightIconStyled>
+					<div className="bg-slate-200 h-8 w-8 flex items-center justify-center  rounded-full">
+						<ArrowRightIconStyled>
+							{/* <ArrowRightIcon /> */}
+							<svg
+								version="1.1"
+								id="Livello_1"
+								xmlns="http://www.w3.org/2000/svg"
+								x="0px"
+								y="0px"
+								width="15"
+								height="20"
+								viewBox="0 0 8 13"
+							>
+								<path
+									d="M1,12l6-5.7L1,1"
+									fill="none"
+									stroke="black"
+									stroke-linecap="round"
+								></path>
+							</svg>
+						</ArrowRightIconStyled>
+					</div>
 				</ArrowRight>
 
 			)}

@@ -7,11 +7,15 @@ import { ReactComponent as CloseIcon } from '../../assets/icons/times-solid.svg'
 import { Icon } from "components/Atomic";
 
 
-const RecapPanelContainer = styled.div`
+const RecapPanelContainer = styled.div<{ $isMobile?: boolean }>`
     position: absolute;
     left: 50px;
     bottom: 35px;
     z-index: 3;
+    ${props => !props.$isMobile && `display: block`};
+    @media (max-width: 768px) {
+        display: none;
+    }
     min-width: 170px;  
     @media (max-height: 550px) {
 		bottom: 25px;
@@ -108,7 +112,7 @@ const RecapPanel: FC<{ onClose: () => void }> = ({ onClose }) => {
     if (currentAttributesSelection)
         setItemsForTheRecapPanel(currentAttributesSelection);
 
-    return <RecapPanelContainer key="recap-container">
+    return <RecapPanelContainer $isMobile key="recap-container">
         <RecapPanelContent key="recap-content">
 
             {sellerSettings?.canUserCloseCompositionRecap && <RemoveIcon onClick={onClose}><CloseIcon /></RemoveIcon>}

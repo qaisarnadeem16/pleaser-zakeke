@@ -322,10 +322,11 @@ export const SecondScreenIcon = styled(Icon)`
 	height: 32px;
 `;
 
-export const RecapPanelIcon = styled(Icon)`
+export const RecapPanelIcon = styled(Icon) <{ $isMobile?: boolean }>`
 	position: absolute;
 	left: 20px;
 	bottom: 40px;
+	display: ${(props) => (props.$isMobile ? 'none' : 'block')};
 	width: 32px;
 	height: 32px;
 	z-index: 3;
@@ -334,97 +335,97 @@ export const RecapPanelIcon = styled(Icon)`
 	}
 `;
 
-export const TopRightIcons = styled.div`
-	position: absolute;
-	right: 10px;
-	top: 10px;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	z-index: 3;
-	gap: 20px;
+export const TopRightIcons = styled.div<{ $isMobile?: boolean }>`
+position: absolute;
+right: 10px;
+top: 10px;
+display: ${(props) => (props.$isMobile ? 'none' : 'flex')};
+flex - direction: row;
+align - items: center;
+justify - content: center;
+z - index: 3;
+gap: 20px;
 `;
 
-export const BottomRightIcons = styled.div`
-	position: absolute;
-	right: 10px;
-	bottom: 40px;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	z-index: 3;
-	gap: 20px;
-	@media (max-height: 550px) {
-		bottom: 20px;
-	}
+export const BottomRightIcons = styled.div<{ $isMobile?: boolean }>`
+position: absolute;
+right: 10px;
+bottom: 40px;
+display: ${(props) => (props.$isMobile ? 'none' : 'flex')};
+flex - direction: row;
+align - items: center;
+justify - content: center;
+z - index: 3;
+gap: 20px;
+@media(max - height: 550px) {
+	bottom: 20px;
+}
 `;
 
 export const ArIcon = styled(ArSolid)`
-	position: absolute;
-	right: 0px;
-	top: 20px;
-	width: 32px;
-	height: 32px;
-	cursor: pointer;
+position: absolute;
+right: 0px;
+top: 20px;
+width: 32px;
+height: 32px;
+cursor: pointer;
 
-	@media (hover) {
+@media(hover) {
 		&:hover {
-			opacity: 0.5;
-		}
+		opacity: 0.5;
 	}
+}
 `;
 
 export const AiIcon = styled(AISolid) <{ $isArIconVisible?: boolean }>`
-	width: 32px;
-	height: 32px;
-	cursor: pointer;
-	position: absolute;
-	top: 20px;
-	right: 10px;
+width: 32px;
+height: 32px;
+cursor: pointer;
+position: absolute;
+top: 20px;
+right: 10px;
 
 	${(props) =>
 		props.$isArIconVisible &&
 		`
     	right: 50px;
     `}
-	@media (hover) {
+@media(hover) {
 		&:hover {
-			opacity: 0.5;
-		}
+		opacity: 0.5;
 	}
+}
 `;
 
 export const TryOnIcon = styled(Icon)`
-	position: absolute;
-	height: 80px;
-	right: 0px;
-	bottom: 90px;
-	cursor: pointer;
+position: absolute;
+height: 80px;
+right: 0px;
+bottom: 90px;
+cursor: pointer;
 `;
 
 export const Center = styled.div`
-	text-align: center;
-	font-size: 18px;
-	padding: 30px;
+text - align: center;
+font - size: 18px;
+padding: 30px;
 `;
 
 export const SupportedFormatsList = styled.span`
-	font-size: 16px;
-	font-style: italic;
-	text-align: center;
-	color: #313c46;
-	padding-top: 5px;
+font - size: 16px;
+font - style: italic;
+text - align: center;
+color: #313c46;
+padding - top: 5px;
 `;
 
 export const ZakekeDesignerContainer = styled.div<{ $isMobile?: boolean }>`
-	height: 100%;
-	width: 100%;
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	background: #ffffff;
+height: 100 %;
+width: 100 %;
+position: relative;
+display: flex;
+flex - direction: column;
+background: #ffffff;
 	${(props) =>
 		props.$isMobile &&
 		`
@@ -435,26 +436,26 @@ export const ZakekeDesignerContainer = styled.div<{ $isMobile?: boolean }>`
 `;
 
 export const IconsAndDesignerContainer = styled.div`
-	position: absolute;
-	left: 0;
-	top: calc(50% - 30px);
-	z-index: 2;
-	display: flex;
-	flex-direction: column;
+position: absolute;
+left: 0;
+top: calc(50 % - 30px);
+z - index: 2;
+display: flex;
+flex - direction: column;
 `;
 
 export const DesignerContainer = styled.div`
-	display: flex;
-	flex-flow: column;
-	user-select: none;
-	width: 100%;
+display: flex;
+flex - flow: column;
+user - select: none;
+width: 100 %;
 `;
 
 export const UploadButtons = styled.div`
-	display: flex;
-	flex-direction: column;
-	grid-gap: 5px;
-	margin: 20px 0px;
+display: flex;
+flex - direction: column;
+grid - gap: 5px;
+margin: 20px 0px;
 `;
 
 export type PropChangeHandler = (
@@ -464,10 +465,10 @@ export type PropChangeHandler = (
 ) => void;
 
 export const PriceContainer = styled.div<{ $isMobile?: boolean }>`
-	font-size: 20px;
-	font-weight: 600;
-	color: #313c46;
-	margin-right: 20px;
+font - size: 20px;
+font - weight: 600;
+color: #313c46;
+margin - right: 20px;
 	${(props) =>
 		props.$isMobile &&
 		`
@@ -476,50 +477,52 @@ export const PriceContainer = styled.div<{ $isMobile?: boolean }>`
 `;
 
 export const StepsContainer = styled.div`
-	position: relative;
-	padding: 0px 20px 20px 20px;
+position: relative;
+padding: 0px 20px 20px 20px;
 
-	@media (max-width: 1024px) {
-		width: 100%;
-		height: 50%;
-		flex-direction: column;
-		position: relative;
-	}
+@media(max - width: 1024px) {
+	width: 100 %;
+	height: 50 %;
+	flex - direction: column;
+	position: relative;
+}
 `;
 
 export const ActualStepName = styled.h4<{ $isMobile?: boolean }>`
-	text-align: center;
-	margin: 0;
+text - align: center;
+margin: 0;
 	${(props) => !props.$isMobile && `margin-top: 15px;`}
-	font-weight: 500;
-	color: #313c46;
+font - weight: 500;
+color: #313c46;
 `;
 
 export const QuantityContainer = styled.div`
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	height: 70px;
-	background-color: white;
-	padding-left: 10px;
-	color: #313c46;
-	grid-gap: 10px;
-	/* min-width: 150px; */
-	/* input{
-		min-width: 100px;
-	} */
+display: flex;
+flex - direction: row;
+justify - content: center;
+align - items: center;
+height: 70px;
+background - color: white;
+padding - left: 10px;
+color: #313c46;
+grid - gap: 10px;
+/* min-width: 150px; */
+/* input{
+	min-width: 100px;
+} */
 `;
 
-export const FooterMobileContainer = styled.div<{ isQuoteEnable?: boolean }>`
-	height: 70px;
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	background-color: #fff;
-	font-size: 12px;
-	margin-top: 4px;
-	border-top: 1px #fff solid;
-	grid-template-areas: 'back pdf save share cart';
+export const FooterMobileContainer = styled.div<{ isQuoteEnable?: boolean, $isMobile?: boolean; }>`
+height: 70px;
+display: ${(props) => (props.$isMobile ? 'flex' : 'none')};
+flex-direction:column;
+align-items: end;
+grid - template - columns: repeat(5, 1fr);
+background - color: #fff;
+font - size: 12px;
+margin - top: 4px;
+border - top: 1px #fff solid;
+grid - template - areas: 'back pdf save share cart';
 	${(props) =>
 		props.isQuoteEnable &&
 		`
@@ -529,30 +532,174 @@ export const FooterMobileContainer = styled.div<{ isQuoteEnable?: boolean }>`
 `;
 
 export const AttributeDescription = styled.p`
-	margin: 0;
+margin: 0;
 `;
 
 export const SelectContainer = styled.div`
-	margin-bottom: 30px;
-	padding-bottom: 30px;
-	border-bottom: 1px #ccc dotted;
-	position: relative;
+margin - bottom: 30px;
+padding - bottom: 30px;
+border - bottom: 1px #ccc dotted;
+position: relative;
 `;
 
 export const ExtensionFieldsContainer = styled.div`
-	margin: 0px auto;
-	display: flex;
-	flex-direction: row;
+margin: 0px auto;
+display: flex;
+flex - direction: row;
 `;
 
 export const ExtensionFieldItem = styled.div`
-	border-right: 1px solid black;
-	padding: 0px 5px;
-	text-align: right;
+border - right: 1px solid black;
+padding: 0px 5px;
+text - align: right;
 `;
 
 export const CustomQuotationConfirmMessage = styled(DialogWindow)`
+display: flex;
+align - items: center;
+justify - content: center;
+`;
+
+
+export const FullscreenArrowIcon = styled(Icon) <{ $isMobile?: boolean }>`
+    position: absolute;
+	bottom:5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 32px;
+    height: 32px;
+	backgroundColor:red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ${props => !props.$isMobile && `display: none`};
+`;
+
+export const FooterMobileIcon = styled.div<{
+	isHidden?: boolean;
+	color?: string;
+	backgroundColor?: string;
+	iconColor?: string;
+	isCart?: boolean;
+	isSaved?: boolean
+	disabled?: boolean;
+	gridArea?: string;
+	isPrice?: boolean;
+}>`
+	display: flex;
+	align-items: end;
+	justify-content: end;
+	border: 1px transparent solid;
+    width:50px;
+	color: ${(props) => (props.color ? props.color : `#313c46`)};
+	background-color: ${(props) => (props.backgroundColor ? props.backgroundColor : `transparent`)};
+	font-size: 14px;
+	text-transform: uppercase;
+	text-align: center;
+	display: inline-flex;
+	border: none;
+	border-right: 3px #f4f4f4 solid;
+	cursor: pointer;
+	font-weight: bold !important;
+
+	svg {
+		fill: ${(props) => props.iconColor && `${props.iconColor}`};
+		width: 32px;
+		height: 32px;
+	}
+
+	${(props) => props.isHidden && `visibility:hidden`};
+
+	${(props) =>
+		props.isCart &&
+		`display: flex;
+        flex-direction: column-reverse;
+        align-items: end;
+        justify-content: end;
+		padding:5px;
+		position:fixed;
+		`};
+	${(props) =>
+		props.isSaved &&
+		`
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: end;
+        justify-content: end;
+		padding:5px;
+		position:absolute;
+		bottom:1rem;
+		`};
+	${(props) =>
+		props.isPrice &&
+		`
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: top;
+        justify-content: top;
+		padding:5px;
+		`};
+
+	${(props) =>
+		props.disabled &&
+		`
+      background-color: lightgray;
+      border: 1px solid gray;
+      color: #313c46;
+  `}
+	${(props) => props.gridArea && `grid-area:${props.gridArea}`};
+`;
+
+export const FooterPriceIcon = styled.div<{
+	isHidden?: boolean;
+	color?: string;
+	backgroundColor?: string;
+	iconColor?: string;
+	isCart?: boolean;
+	isSaved?: boolean;
+	disabled?: boolean;
+	gridArea?: string;
+	isPrice?: boolean;
+}>`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-`;
+	position: ${(props) => (props.isPrice ? 'fixed' : 'static')}; /* Use fixed for positioning */
+	top: ${(props) => (props.isPrice ? '20px' : 'auto')}; /* Place at the top */
+	left: ${(props) => (props.isPrice ? '10px' : 'auto')}; /* Place at the left */  
+	color: ${(props) => (props.color ? props.color : `#313c46`)};
+	font-size: 14px;
+	text-transform: uppercase;
+	text-align: center;
+	display: inline-flex;
+	min-height: 38px;
+	cursor: pointer;
+	flex-direction: column;
+	font-weight: bold !important;
+	z-index: 1001; /* Ensure it stays above other elements */
+	svg {
+	  fill: ${(props) => props.iconColor && `${props.iconColor}`};
+	  width: 32px;
+	  height: 32px;
+	}
+  
+	${(props) => props.isHidden && `visibility: hidden;`};
+  
+	${(props) =>
+		props.isPrice && `
+		  padding: 5px;
+		  border-top: 2px black solid;
+		  display:flex;
+	`};
+  
+	${(props) =>
+		props.disabled &&
+		`
+		background-color: lightgray;
+		border: 1px solid gray;
+		color: #313c46;
+	`}
+  
+	${(props) => props.gridArea && `grid-area:${props.gridArea}`};
+  `;
+

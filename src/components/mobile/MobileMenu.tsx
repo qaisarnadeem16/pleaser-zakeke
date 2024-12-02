@@ -586,9 +586,9 @@ const MobileMenu = () => {
 													<button
 														onClick={() => handlePrevious(item)}
 														disabled={activeIndex === 0}
-														className="z-10 pr-10"
-													>
-														<svg version="1.1" x="0px" y="0px" width="19" height="25" viewBox="0 0 10 15">
+														className="z-10 mr-5 mb-4 bg-slate-200 h-8 w-8 flex items-center justify-center  rounded-full"
+													> 
+														<svg version="1.1" x="0px" y="0px" width="19" height="20" viewBox="0 0 10 15">
 															<path d="M7,12L1,6.3L7,1" fill="none" stroke="rgb(0, 0, 0)" stroke-linecap="round"></path>
 														</svg>
 
@@ -654,7 +654,7 @@ const MobileMenu = () => {
 													<button
 														onClick={() => handleNext(item)}
 														disabled={activeIndex === item.options.length - 1}
-														className="z-10 pl-10 pb-2"
+														className="z-10 mb-4 ml-5 bg-slate-200 h-8 w-8 flex items-center justify-center rounded-full"
 													>
 														<svg
 															version="1.1"

@@ -27,8 +27,8 @@ export const MobileItemContainer = styled.div<{ selected?: boolean }>`
 
 // Styled component for the image of each menu item
 export const MenuItemImage = styled.img<{ isRound?: boolean }>`
-	width: 64px;
-	height: 64px;
+	width: 58px;
+	height: 54px;
 	object-fit: ${(props) => (props.isRound ? 'cover' : 'contain')};
 	/* margin-bottom: 20px; */
 	border-radius: ${(props) => (props.isRound ? '64px!important' : '0')};
@@ -63,7 +63,7 @@ export const MenuItemImagesImageWrapper = styled.div`
 // Styled component for the label of each menu item
 export const MenuItemLabel = styled.span`
 	font-size: 14px!important;
-	font-weight: 400;
+	font-weight: 500;
 	position: relative;
 	/* bottom: 20px; */
 	left: 0;
@@ -230,7 +230,7 @@ export const MobileItemsContainer: FC<MenuItemsContainerProps> = ({
 		<MenuItemsWrapper ref={ref} displayFlex={displayFlex} height={height}>
 			{showLeftArrow && isLeftArrowVisible && (
 				<ArrowLeft>
-					<div className="bg-slate-200 h-8 w-8 flex items-center justify-center  rounded-full">
+					<div className="bg-slate-200 mb-1 h-8 w-8 flex items-center justify-center  rounded-full">
 						<ArrowLeftIconStyled>
 							{/* <ArrowLeftIcon /> */}
 							<svg version="1.1" x="0px" y="0px" width="19" height="20" viewBox="0 0 10 15">
@@ -247,7 +247,7 @@ export const MobileItemsContainer: FC<MenuItemsContainerProps> = ({
 
 			{showRightArrow && isRightArrowVisible && (
 				<ArrowRight>
-					<div className="bg-slate-200 h-8 w-8 flex items-center justify-center  rounded-full">
+					<div className="bg-slate-200 mb-1 h-8 w-8 flex items-center justify-center  rounded-full">
 						<ArrowRightIconStyled>
 							{/* <ArrowRightIcon /> */}
 							<svg

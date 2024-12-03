@@ -361,7 +361,7 @@ const MobileMenu = () => {
 			)}
 
 
-			<div className="flex justify-center w-full items-center">
+			<div className="flex justify-center bg-gray-400 w-full items-center">
 				{actualGroups.length > 0 && (
 					<div className="flex justify-center w-full items-center">
 						{/* Previous Button */}
@@ -590,105 +590,101 @@ const MobileMenu = () => {
 													</div>
 												</MobileItemsContainer>
 												:
-												<div className='max-w-full overflow-x-hidden px-5 bg-white  flex justify-center  items-center'>
+												<div className='max-w-full  px-5 bg-white flex justify-center items-center'>
 													{/* Previous Button */}
-													<div className="">
-														<button
-															onClick={() => handlePrevious(item)}
-															disabled={activeIndex === 0}
-															className="z-10 mb-4 bg-slate-200 h-8 w-8 flex items-center justify-center  rounded-full"
-														>
-															<svg version="1.1" x="0px" y="0px" width="19" height="20" viewBox="0 0 10 15">
-																<path d="M7,12L1,6.3L7,1" fill="none" stroke="rgb(0, 0, 0)" stroke-linecap="round"></path>
-															</svg>
+													<button
+														onClick={() => handlePrevious(item)}
+														disabled={activeIndex === 0}
+														className="z-10 mb-4 bg-slate-200 h-8 w-8 flex items-center justify-center rounded-full absolute left-2"
+													>
+														<svg version="1.1" x="0px" y="0px" width="19" height="20" viewBox="0 0 10 15">
+															<path d="M7,12L1,6.3L7,1" fill="none" stroke="rgb(0, 0, 0)" strokeLinecap="round"></path>
+														</svg>
+													</button>
 
-														</button>
-													</div>
+													<div className="flex gap-4 px-5 py-4 overflow-x-auto scroll-snap-x">
+														{/* Previous Item */}
+														{activeIndex > 0 && (
+															<div
+																className={`flex flex-col gap-2 justify-center cursor-pointer`}
+																onClick={() => setActiveIndex(activeIndex - 1)}
+																style={{
+																	padding: '0.5rem',
+																	textAlign: 'center',
+																}}
+															>
+																<img
+																	src={item.options[activeIndex - 1].imageUrl ?? noImage}
+																	alt={item.options[activeIndex - 1].name}
+																	className="w-16 h-16 rounded-full"
+																/>
+																<p className="text-sm font-medium">{item.options[activeIndex - 1].name}</p>
+															</div>
+														)}
 
-													<div style={{ display: "flex", gap: ".5rem", padding: ".3rem" }}>
-														{/* Display only the selected option */}
-														{activeIndex !== 0 && <div
-															className={`flex flex-col gap-2 justify-center`}
-															style={{
-																padding: "0.5rem",
-																textAlign: "center",
-															}}
-														>
-															<img
-																src={item.options[activeIndex - 1].imageUrl ?? noImage}
-																alt={item.options[activeIndex - 1].name}
-																className={`w-12 h-12 rounded-full `}
-															/>
-															<p className="text-sm font-medium">{item.options[activeIndex - 1].name}</p>
-														</div>}
-													</div>
-
-													{/* Option Display */}
-													<div style={{ display: "flex", gap: ".5rem", padding: ".3rem" }}>
-														{/* Display only the selected option */}
+														{/* Current Item */}
 														<div
-															className={`flex flex-col gap-2 justify-center`}
+															className={`flex flex-col gap-2 justify-center cursor-pointer`}
+															onClick={() => setActiveIndex(activeIndex)}
 															style={{
-																padding: "rem",
-																textAlign: "center",
+																padding: '0.5rem',
+																textAlign: 'center',
 															}}
 														>
 															<img
 																src={item.options[activeIndex].imageUrl ?? noImage}
 																alt={item.options[activeIndex].name}
-																className={`w-[65px] h-[65px] rounded-full ${item.options[activeIndex].selected ? " border-[5px] border-black" : ""
+																className={`w-[75px] h-[75px] rounded-full ${item.options[activeIndex].selected ? 'border-[5px] border-black' : ''
 																	}`}
 															/>
 															<p className="text-sm font-medium">{item.options[activeIndex].name}</p>
 														</div>
-													</div>
 
-													<div style={{ display: "flex", gap: ".5rem", padding: ".3rem" }}>
-														{/* Display only the selected option */}
-														<div
-															className={`flex flex-col gap-2 justify-center`}
-															style={{
-																padding: "0.5rem",
-																textAlign: "center",
-															}}
-														>
-															<img
-																src={item.options[activeIndex + 1].imageUrl ?? noImage}
-																alt={item.options[activeIndex + 1].name}
-																className={`w-12 h-12 rounded-full `}
-															/>
-															<p className="text-sm font-medium">{item.options[activeIndex + 1].name}</p>
-														</div>
+														{/* Next Item */}
+														{activeIndex < item.options.length - 1 && (
+															<div
+																className={`flex flex-col gap-2 justify-center cursor-pointer`}
+																onClick={() => setActiveIndex(activeIndex + 1)}
+																style={{
+																	padding: '0.5rem',
+																	textAlign: 'center',
+																}}
+															>
+																<img
+																	src={item.options[activeIndex + 1].imageUrl ?? noImage}
+																	alt={item.options[activeIndex + 1].name}
+																	className="w-16 h-16 rounded-full"
+																/>
+																<p className="text-sm font-medium">{item.options[activeIndex + 1].name}</p>
+															</div>
+														)}
 													</div>
 
 													{/* Next Button */}
-													<div className="">
-														<button
-															onClick={() => handleNext(item)}
-															disabled={activeIndex === item.options.length - 1}
-															className="z-10 mb-4  bg-slate-200 h-8 w-8 flex items-center justify-center rounded-full"
+													<button
+														onClick={() => handleNext(item)}
+														disabled={activeIndex === item.options.length - 1}
+														className="z-10 mb-4 bg-slate-200 h-8 w-8 flex items-center justify-center rounded-full absolute right-2"
+													>
+														<svg
+															version="1.1"
+															id="Livello_1"
+															xmlns="http://www.w3.org/2000/svg"
+															x="0px"
+															y="0px"
+															width="15"
+															height="20"
+															viewBox="0 0 8 13"
 														>
-															<svg
-																version="1.1"
-																id="Livello_1"
-																xmlns="http://www.w3.org/2000/svg"
-																x="0px"
-																y="0px"
-																width="15"
-																height="20"
-																viewBox="0 0 8 13"
-															>
-																<path
-																	d="M1,12l6-5.7L1,1"
-																	fill="none"
-																	stroke="black"
-																	stroke-linecap="round"
-																></path>
-															</svg>
-														</button>
-													</div>
+															<path
+																d="M1,12l6-5.7L1,1"
+																fill="none"
+																stroke="black"
+																strokeLinecap="round"
+															></path>
+														</svg>
+													</button>
 												</div>
-
 											}
 										</div>
 
@@ -763,9 +759,6 @@ const MobileMenu = () => {
 					</MobileItemsContainer> */}
 				</>
 			)}
-
-
-
 
 			{/* Designer / Customizer */}
 			{selectedGroup?.id === -2 && isTemplateEditorOpened && (

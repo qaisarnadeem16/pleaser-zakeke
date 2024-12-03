@@ -22,7 +22,7 @@ export const MobileItemContainer = styled.div<{ selected?: boolean }>`
 	flex-direction: column;
 	/* border-right: 2px #fff solid; */
 	position: relative;
-	${(props) => props.selected && `background-color: #f7f7f7;`}
+	${(props) => props.selected && `background-color: #D3D3D3;`}
 `;
 
 // Styled component for the image of each menu item
@@ -62,7 +62,7 @@ export const MenuItemImagesImageWrapper = styled.div`
 
 // Styled component for the label of each menu item
 export const MenuItemLabel = styled.span`
-	font-size: 8px!important;
+	font-size: 14px!important;
 	font-weight: 400;
 	position: relative;
 	/* bottom: 20px; */
@@ -136,7 +136,7 @@ interface MenuItemProps {
 const MenuItemsWrapper = styled.div <{ displayFlex?: boolean; height?: number, }>`
 	display: ${(props) => (props.displayFlex ? 'flex' : 'block')};
 	max-width: 100%;
-	 min-height: ${(props) => (props.height !== undefined ? `${props.height}px` : '100px')};
+	min-height: ${(props) => (props.height !== undefined ? `${props.height}px` : '100px')};
 	width: 100%;
 	overflow-x: auto;
 	background-color: #ffffff;

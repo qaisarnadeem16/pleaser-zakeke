@@ -11,12 +11,12 @@ import noImage from '../../assets/images/no_image.png';
 export const MobileItemContainer = styled.div<{ selected?: boolean }>`
 	align-items: center;
 	justify-content: center;
-	min-width: 90px;
-	max-width: 90px;
-	width: 90px;
-	height: 90px;
-	min-height: 90px;
-	max-height: 90px;
+	min-width: 60px;
+	max-width: 60px;
+	width: 60px;
+	height: 70px;
+	min-height: 70px;
+	max-height: 70px;
 	flex: 1;
 	display: flex;
 	flex-direction: column;
@@ -27,8 +27,8 @@ export const MobileItemContainer = styled.div<{ selected?: boolean }>`
 
 // Styled component for the image of each menu item
 export const MenuItemImage = styled.img<{ isRound?: boolean }>`
-	width: 58px;
-	height: 58px;
+	width: 45px;
+	height: 45px;
 	object-fit: ${(props) => (props.isRound ? 'cover' : 'contain')};
 	/* margin-bottom: 20px; */
 	border-radius: ${(props) => (props.isRound ? '64px!important' : '0')};
@@ -62,7 +62,7 @@ export const MenuItemImagesImageWrapper = styled.div`
 
 // Styled component for the label of each menu item
 export const MenuItemLabel = styled.span`
-	font-size: 14px!important;
+	font-size: 12px!important;
 	font-weight: 500;
 	position: relative;
 	/* bottom: 20px; */
@@ -157,11 +157,11 @@ const MenuItemsWrapper = styled.div <{ displayFlex?: boolean; height?: number, }
 const ArrowCss = css`
 	position: absolute;
 	left: 10px;
-	bottom: 35px;
+	bottom: 60px;
 	/* background-color: #f1f1f1; */
 	border-radius: 30px;
-	width: 32px;
-	height: 32px;
+	width: 20px;
+	height: 20px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -230,7 +230,7 @@ export const MobileItemsContainer: FC<MenuItemsContainerProps> = ({
 		<MenuItemsWrapper ref={ref} displayFlex={displayFlex} height={height}>
 			{showLeftArrow && isLeftArrowVisible && (
 				<ArrowLeft>
-					<div className="bg-slate-200 mb-1 h-8 w-8 flex items-center justify-center  rounded-full">
+					<div className="bg-slate-100 w-8 h-8 flex items-center justify-center  rounded-full">
 						<ArrowLeftIconStyled>
 							{/* <ArrowLeftIcon /> */}
 							<svg version="1.1" x="0px" y="0px" width="19" height="20" viewBox="0 0 10 15">
@@ -247,7 +247,7 @@ export const MobileItemsContainer: FC<MenuItemsContainerProps> = ({
 
 			{showRightArrow && isRightArrowVisible && (
 				<ArrowRight>
-					<div className="bg-slate-200 mb-1 h-8 w-8 flex items-center justify-center  rounded-full">
+					<div className="bg-slate-100 p-1 h-8 w-8 flex items-center justify-center  rounded-full">
 						<ArrowRightIconStyled>
 							{/* <ArrowRightIcon /> */}
 							<svg

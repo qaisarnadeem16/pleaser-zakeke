@@ -591,13 +591,13 @@ const MobileMenu = () => {
 													</div>
 												</MobileItemsContainer>
 												:
-												<div className="max-w-full px-5 bg-white flex justify-center items-center relative">
+												<div className="max-w-full  bg-white flex justify-center items-center relative">
 													{/* Previous Button */}
 
 													<button
 														onClick={() => handlePrevious(item)}
 														disabled={activeIndex === 0 || item.options.length <= 1}
-														className={`z-10 mb-4 h-8 w-8 flex items-center justify-center rounded-full absolute left-2 ${activeIndex === 0 || item.options.length <= 1 ? 'opacity-50 cursor-not-allowed' : ''
+														className={`z-10 mb-4 h-6 w-6 bg-slate-100 flex items-center justify-center rounded-full absolute left-2 ${activeIndex === 0 || item.options.length <= 1 ? 'opacity-50 cursor-not-allowed' : ''
 															}`}
 													>
 														<svg
@@ -613,7 +613,7 @@ const MobileMenu = () => {
 													</button>
 
 													{/* Options List */}
-													<div className="flex gap-4 w-4/5 mx-auto px-5 py-1 overflow-x-auto scroll-snap-x no-scrollbar">
+													<div className="flex gap-4 mx-auto py-1 overflow-x-auto scroll-snap-x no-scrollbar">
 														{item.options.map((option, i) => (
 															<div
 																key={i}
@@ -629,7 +629,7 @@ const MobileMenu = () => {
 																<img
 																	src={option.imageUrl ?? noImage}
 																	alt={option.name}
-																	className={`rounded-full ${activeIndex === i ? 'border-[4px] border-black max-w-[55px] max-h-[55px]  min-w-[55px] min-h-[55px] ' : 'max-w-[50px] max-h-[50px] min-w-[50px] min-h-[50px] '
+																	className={`rounded-full shadow-md ${activeIndex === i ? 'border-[4px] border-black max-w-[55px] max-h-[55px]  min-w-[55px] min-h-[55px] ' : 'max-w-[50px] max-h-[50px] min-w-[50px] min-h-[50px] '
 																		}`}
 																/>
 																<div className="text-xs font-medium pt-1">{option.name.slice(0, 6)}</div>
@@ -641,7 +641,7 @@ const MobileMenu = () => {
 													<button
 														onClick={() => handleNext(item)}
 														disabled={activeIndex === item.options.length - 1 || item.options.length <= 1} // Disabled if last item or no items
-														className={`z-10 mb-4 h-8 w-8 flex items-center justify-center rounded-full absolute right-2 ${activeIndex === item.options.length - 1 || item.options.length <= 1
+														className={`z-10 mb-4 h-6 w-6 bg-slate-100 flex items-center justify-center rounded-full absolute right-2 ${activeIndex === item.options.length - 1 || item.options.length <= 1
 																? 'opacity-50 cursor-not-allowed'
 																: ''
 															}`}

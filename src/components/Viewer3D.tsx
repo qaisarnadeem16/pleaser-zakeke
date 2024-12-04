@@ -609,6 +609,7 @@ const Viewer3D = () => {
 							hoverable
 							onClick={switchFullscreenArrows}
 						>
+
 							{isFullscreen ? <ArrowUpSimple /> : <ArrowDownSimple />}
 						</FullscreenArrowIcon>
 					)}

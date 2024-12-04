@@ -28,7 +28,7 @@ export const MobileItemContainer = styled.div<{ selected?: boolean }>`
 // Styled component for the image of each menu item
 export const MenuItemImage = styled.img<{ isRound?: boolean }>`
 	width: 58px;
-	height: 54px;
+	height: 58px;
 	object-fit: ${(props) => (props.isRound ? 'cover' : 'contain')};
 	/* margin-bottom: 20px; */
 	border-radius: ${(props) => (props.isRound ? '64px!important' : '0')};

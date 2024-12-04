@@ -164,10 +164,13 @@ const Viewer3D = () => {
 			(document as any).msFullscreenElement
 		) {
 			quitFullscreen(ref.current!);
+			setIsFullscreen(false);
 		} else {
 			launchFullscreen(ref.current!);
+			setIsFullscreen(true);
 		}
 	};
+
 
 	const handleArClick = async (arOnFlyUrl: string) => {
 		if (IS_ANDROID || IS_IOS) {
@@ -606,7 +609,7 @@ const Viewer3D = () => {
 							hoverable
 							onClick={switchFullscreenArrows}
 						>
-							{/* {isFullscreen ? <ArrowUpSimple /> : <ArrowDownSimple />} */}
+							{isFullscreen ? <ArrowUpSimple /> : <ArrowDownSimple />}
 						</FullscreenArrowIcon>
 					)}
 					<TopRightIcons $isMobile={isMobile}>

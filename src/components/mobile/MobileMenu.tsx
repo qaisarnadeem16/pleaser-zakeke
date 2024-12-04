@@ -361,7 +361,7 @@ const MobileMenu = () => {
 			)}
 
 
-			<div className="flex justify-center bg-gray-100 w-full items-center">
+			<div className="flex justify-center bg-gray-50 w-full items-center">
 				{actualGroups.length > 0 && (
 					<div className="flex justify-center w-full items-center">
 						{/* Previous Button */}
@@ -455,6 +455,7 @@ const MobileMenu = () => {
 					))}
 				</TemplatesContainer>
 			)}
+
 			{selectedGroup && (selectedGroup.name !== "PANEL" && selectedGroup.name !== "BOTTOM") && (
 				<MobileItemsContainer
 					isLeftArrowVisible
@@ -595,21 +596,24 @@ const MobileMenu = () => {
 
 													<button
 														onClick={() => handlePrevious(item)}
-														disabled={activeIndex === 0}
-														className="z-10 mb-4 h-8 w-8 flex items-center justify-center rounded-full absolute left-2"
+														disabled={activeIndex === 0 || item.options.length <= 1}
+														className={`z-10 mb-4 h-8 w-8 flex items-center justify-center rounded-full absolute left-2 ${activeIndex === 0 || item.options.length <= 1 ? 'opacity-50 cursor-not-allowed' : ''
+															}`}
 													>
-														<svg version="1.1" x="0px" y="0px" width="19" height="20" viewBox="0 0 10 15">
-															<path
-																d="M7,12L1,6.3L7,1"
-																fill="none"
-																stroke="rgb(0, 0, 0)"
-																strokeLinecap="round"
-															></path>
+														<svg
+															xmlns="http://www.w3.org/2000/svg"
+															viewBox="0 0 1024 1024"
+															width="45px"
+															height="45px"
+															fill="#000000"
+															transform="rotate(180)"
+														>
+															<path d="M419.3 264.8l-61.8 61.8L542.9 512 357.5 697.4l61.8 61.8L666.5 512z" />
 														</svg>
 													</button>
 
 													{/* Options List */}
-													<div className="flex gap-4 w-4/5 mx-auto px-5 overflow-x-auto scroll-snap-x no-scrollbar">
+													<div className="flex gap-4 w-4/5 mx-auto px-5 py-1 overflow-x-auto scroll-snap-x no-scrollbar">
 														{item.options.map((option, i) => (
 															<div
 																key={i}
@@ -636,29 +640,23 @@ const MobileMenu = () => {
 													{/* Next Button */}
 													<button
 														onClick={() => handleNext(item)}
-														disabled={activeIndex === item.options.length - 1}
-														className="z-10 mb-4  h-8 w-8 flex items-center justify-center rounded-full absolute right-2"
+														disabled={activeIndex === item.options.length - 1 || item.options.length <= 1} // Disabled if last item or no items
+														className={`z-10 mb-4 h-8 w-8 flex items-center justify-center rounded-full absolute right-2 ${activeIndex === item.options.length - 1 || item.options.length <= 1
+																? 'opacity-50 cursor-not-allowed'
+																: ''
+															}`}
 													>
 														<svg
-															version="1.1"
-															id="Livello_1"
 															xmlns="http://www.w3.org/2000/svg"
-															x="0px"
-															y="0px"
-															width="15"
-															height="20"
-															viewBox="0 0 8 13"
+															viewBox="0 0 1024 1024"
+															width="40px"
+															height="40px"
+															fill="#000000"
 														>
-															<path
-																d="M1,12l6-5.7L1,1"
-																fill="none"
-																stroke="black"
-																strokeLinecap="round"
-															></path>
+															<path d="M419.3 264.8l-61.8 61.8L542.9 512 357.5 697.4l61.8 61.8L666.5 512z" />
 														</svg>
 													</button>
 												</div>
-
 											}
 										</div>
 

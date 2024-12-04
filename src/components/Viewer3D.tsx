@@ -156,20 +156,20 @@ const Viewer3D = () => {
 			launchFullscreen(ref.current!);
 		}
 	};
-	const switchFullscreenArrows = () => {
-		if (
-			(document as any).fullscreenElement ||
-			(document as any).webkitFullscreenElement ||
-			(document as any).mozFullScreenElement ||
-			(document as any).msFullscreenElement
-		) {
-			quitFullscreen(ref.current!);
-			setIsFullscreen(false);
-		} else {
-			launchFullscreen(ref.current!);
-			setIsFullscreen(true);
-		}
-	};
+	// const switchFullscreenArrows = () => {
+	// 	if (
+	// 		(document as any).fullscreenElement ||
+	// 		(document as any).webkitFullscreenElement ||
+	// 		(document as any).mozFullScreenElement ||
+	// 		(document as any).msFullscreenElement
+	// 	) {
+	// 		quitFullscreen(ref.current!);
+	// 		setIsFullscreen(false);
+	// 	} else {
+	// 		launchFullscreen(ref.current!);
+	// 		setIsFullscreen(true);
+	// 	}
+	// };
 
 
 	const handleArClick = async (arOnFlyUrl: string) => {
@@ -601,7 +601,7 @@ const Viewer3D = () => {
 						)}
 					</BottomRightIcons>
 
-					{!IS_IOS && (
+					{/* {!IS_IOS && !isSceneLoading && (
 						<FullscreenArrowIcon
 							$isMobile={isMobile}
 							className='fullscreen-icon'
@@ -612,7 +612,7 @@ const Viewer3D = () => {
 
 							{isFullscreen ? <ArrowUpSimple /> : <ArrowDownSimple />}
 						</FullscreenArrowIcon>
-					)}
+					)} */}
 					<TopRightIcons $isMobile={isMobile}>
 						{product && product.isAiConfigurationEnabled && isAIEnabled && (
 							<AiIcon

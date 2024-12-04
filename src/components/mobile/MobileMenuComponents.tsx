@@ -11,19 +11,51 @@ import noImage from '../../assets/images/no_image.png';
 export const MobileItemContainer = styled.div<{ selected?: boolean }>`
 	align-items: center;
 	justify-content: center;
-	min-width: 60px;
-	max-width: 60px;
-	width: 60px;
+	min-width: 80px;
+	max-width: 80px;
+	width: 80px;
 	height: 70px;
 	min-height: 70px;
 	max-height: 70px;
 	flex: 1;
 	display: flex;
 	flex-direction: column;
-	/* border-right: 2px #fff solid; */
 	position: relative;
+	opacity: 0;
+	transform: translateY(20px);
+	animation: fadeIn 0.8s ease-out forwards;
+	
+	/* Stagger effect for children */
+	&:nth-child(1) {
+		animation-delay: 0s;
+	}
+	&:nth-child(2) {
+		animation-delay: 0.1s;
+	}
+	&:nth-child(3) {
+		animation-delay: 0.2s;
+	}
+	&:nth-child(4) {
+		animation-delay: 0.3s;
+	}
+	&:nth-child(5) {
+		animation-delay: 0.4s;
+	}
+
 	${(props) => props.selected && `background-color: #D3D3D3;`}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
 `;
+
 
 // Styled component for the image of each menu item
 export const MenuItemImage = styled.img<{ isRound?: boolean }>`
@@ -62,7 +94,7 @@ export const MenuItemImagesImageWrapper = styled.div`
 
 // Styled component for the label of each menu item
 export const MenuItemLabel = styled.span`
-	font-size: 12px!important;
+	font-size: 13px!important;
 	font-weight: 500;
 	position: relative;
 	/* bottom: 20px; */
@@ -230,11 +262,18 @@ export const MobileItemsContainer: FC<MenuItemsContainerProps> = ({
 		<MenuItemsWrapper ref={ref} displayFlex={displayFlex} height={height}>
 			{showLeftArrow && isLeftArrowVisible && (
 				<ArrowLeft>
-					<div className="bg-slate-100 w-8 h-8 flex items-center justify-center  rounded-full">
+					<div className="bg-slate-100  flex items-center justify-center  rounded-full">
 						<ArrowLeftIconStyled>
 							{/* <ArrowLeftIcon /> */}
-							<svg version="1.1" x="0px" y="0px" width="19" height="20" viewBox="0 0 10 15">
-								<path d="M7,12L1,6.3L7,1" fill="none" stroke="rgb(0, 0, 0)" stroke-linecap="round"></path>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 1024 1024"
+								width="45px"
+								height="45px"
+								fill="#000000"
+								transform="rotate(180)"
+							>
+								<path d="M419.3 264.8l-61.8 61.8L542.9 512 357.5 697.4l61.8 61.8L666.5 512z" />
 							</svg>
 						</ArrowLeftIconStyled>
 					</div>
@@ -247,25 +286,17 @@ export const MobileItemsContainer: FC<MenuItemsContainerProps> = ({
 
 			{showRightArrow && isRightArrowVisible && (
 				<ArrowRight>
-					<div className="bg-slate-100 p-1 h-8 w-8 flex items-center justify-center  rounded-full">
+					<div className="bg-slate-100 flex items-center justify-center  rounded-full">
 						<ArrowRightIconStyled>
 							{/* <ArrowRightIcon /> */}
 							<svg
-								version="1.1"
-								id="Livello_1"
 								xmlns="http://www.w3.org/2000/svg"
-								x="0px"
-								y="0px"
-								width="15"
-								height="20"
-								viewBox="0 0 8 13"
+								viewBox="0 0 1024 1024"
+								width="40px"
+								height="40px"
+								fill="#000000"
 							>
-								<path
-									d="M1,12l6-5.7L1,1"
-									fill="none"
-									stroke="black"
-									stroke-linecap="round"
-								></path>
+								<path d="M419.3 264.8l-61.8 61.8L542.9 512 357.5 697.4l61.8 61.8L666.5 512z" />
 							</svg>
 						</ArrowRightIconStyled>
 					</div>

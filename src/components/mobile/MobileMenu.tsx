@@ -336,7 +336,7 @@ const MobileMenu = () => {
 
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [showLeftArrow, setShowLeftArrow] = useState(false);
-	const [showRightArrow, setShowRightArrow] = useState(true);
+	const [showRightArrow, setShowRightArrow] = useState(false);
 
 	const handleScroll = () => {
 		const scrollableElement = document.querySelector('.scroll-snap-x');
@@ -366,7 +366,6 @@ const MobileMenu = () => {
 			handleOptionSelection(item.options[newIndex]);
 		}
 	};
-
 	// console.log('currentItems', currentItems)
 	// console.log('selectedAttribute', selectedAttribute)
 	// console.log('selectOption', selectedAttribute)

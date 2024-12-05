@@ -629,7 +629,7 @@ const MobileMenu = () => {
 																<img
 																	src={option.imageUrl ?? noImage}
 																	alt={option.name}
-																	className={`rounded-full shadow-md ${activeIndex === i ? 'border-[4px] border-black max-w-[55px] max-h-[55px]  min-w-[55px] min-h-[55px] ' : 'max-w-[50px] max-h-[50px] min-w-[50px] min-h-[50px] '
+																	className={`rounded-full shadow-md ${option.selected ? 'border-[4px] border-black max-w-[55px] max-h-[55px]  min-w-[55px] min-h-[55px] ' : 'max-w-[50px] max-h-[50px] min-w-[50px] min-h-[50px] '
 																		}`}
 																/>
 																<div className="text-xs font-medium pt-1">{option.name.slice(0, 6)}</div>
@@ -642,8 +642,8 @@ const MobileMenu = () => {
 														onClick={() => handleNext(item)}
 														disabled={activeIndex === item.options.length - 1 || item.options.length <= 1} // Disabled if last item or no items
 														className={`z-10 mb-4 h-6 w-6 bg-slate-100 flex items-center justify-center rounded-full absolute right-2 ${activeIndex === item.options.length - 1 || item.options.length <= 1
-																? 'opacity-50 cursor-not-allowed'
-																: ''
+															? 'opacity-50 cursor-not-allowed'
+															: ''
 															}`}
 													>
 														<svg

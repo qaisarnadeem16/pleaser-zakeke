@@ -335,6 +335,22 @@ const MobileMenu = () => {
 	};
 
 	const [activeIndex, setActiveIndex] = useState(0);
+	const [showLeftArrow, setShowLeftArrow] = useState(false);
+	const [showRightArrow, setShowRightArrow] = useState(false);
+
+	const handleScroll = () => {
+		const scrollableElement = document.querySelector('.scroll-snap-x');
+		if (scrollableElement) {
+			const { scrollLeft, scrollWidth, clientWidth } = scrollableElement;
+			// Tolerance margin for precision
+			const tolerance = 2; // Adjust as needed (e.g., 1-5px)
+			// Show Left Arrow if not at the start
+			setShowLeftArrow(scrollLeft > tolerance);
+
+			// Show Right Arrow if not at the end
+			setShowRightArrow(scrollLeft < scrollWidth - clientWidth - tolerance);
+		}
+	};
 
 	const handlePrevious = (item: any) => {
 		if (activeIndex > 0) {
@@ -351,6 +367,7 @@ const MobileMenu = () => {
 			handleOptionSelection(item.options[newIndex]);
 		}
 	};
+
 	// console.log('currentItems', currentItems)
 	// console.log('selectedAttribute', selectedAttribute)
 	// console.log('selectOption', selectedAttribute)
@@ -593,27 +610,28 @@ const MobileMenu = () => {
 												:
 												<div className="max-w-full  bg-white flex justify-center items-center relative">
 													{/* Previous Button */}
-
-													<button
-														onClick={() => handlePrevious(item)}
-														disabled={activeIndex === 0 || item.options.length <= 1}
-														className={`z-10 mb-4 h-6 w-6 bg-slate-100 flex items-center justify-center rounded-full absolute left-2 ${activeIndex === 0 || item.options.length <= 1 ? 'opacity-50 cursor-not-allowed' : ''
-															}`}
-													>
-														<svg
-															xmlns="http://www.w3.org/2000/svg"
-															viewBox="0 0 1024 1024"
-															width="45px"
-															height="45px"
-															fill="#000000"
-															transform="rotate(180)"
+													{showLeftArrow && (
+														<button
+															onClick={() => handlePrevious(item)}
+															disabled={activeIndex === 0 || item.options.length <= 1}
+															className={`z-10 mb-4 h-6 w-6 bg-slate-100 flex items-center justify-center rounded-full absolute left-2 ${activeIndex === 0 || item.options.length <= 1 ? 'opacity-50 cursor-not-allowed' : ''
+																}`}
 														>
-															<path d="M419.3 264.8l-61.8 61.8L542.9 512 357.5 697.4l61.8 61.8L666.5 512z" />
-														</svg>
-													</button>
+															<svg
+																xmlns="http://www.w3.org/2000/svg"
+																viewBox="0 0 1024 1024"
+																width="45px"
+																height="45px"
+																fill="#000000"
+																transform="rotate(180)"
+															>
+																<path d="M419.3 264.8l-61.8 61.8L542.9 512 357.5 697.4l61.8 61.8L666.5 512z" />
+															</svg>
+														</button>
+													)}
 
 													{/* Options List */}
-													<div className="flex gap-4 mx-auto py-1 overflow-x-auto scroll-snap-x no-scrollbar">
+													<div onScroll={handleScroll} className="flex gap-4 mx-auto py-1 overflow-x-auto scroll-snap-x no-scrollbar">
 														{item.options.map((option, i) => (
 															<div
 																key={i}
@@ -638,24 +656,26 @@ const MobileMenu = () => {
 													</div>
 
 													{/* Next Button */}
-													<button
-														onClick={() => handleNext(item)}
-														disabled={activeIndex === item.options.length - 1 || item.options.length <= 1} // Disabled if last item or no items
-														className={`z-10 mb-4 h-6 w-6 bg-slate-100 flex items-center justify-center rounded-full absolute right-2 ${activeIndex === item.options.length - 1 || item.options.length <= 1
-															? 'opacity-50 cursor-not-allowed'
-															: ''
-															}`}
-													>
-														<svg
-															xmlns="http://www.w3.org/2000/svg"
-															viewBox="0 0 1024 1024"
-															width="40px"
-															height="40px"
-															fill="#000000"
+													{showRightArrow && (
+														<button
+															onClick={() => handleNext(item)}
+															disabled={activeIndex === item.options.length - 1 || item.options.length <= 1} // Disabled if last item or no items
+															className={`z-10 mb-4 h-6 w-6 bg-slate-100 flex items-center justify-center rounded-full absolute right-2 ${activeIndex === item.options.length - 1 || item.options.length <= 1
+																? 'opacity-50 cursor-not-allowed'
+																: ''
+																}`}
 														>
-															<path d="M419.3 264.8l-61.8 61.8L542.9 512 357.5 697.4l61.8 61.8L666.5 512z" />
-														</svg>
-													</button>
+															<svg
+																xmlns="http://www.w3.org/2000/svg"
+																viewBox="0 0 1024 1024"
+																width="40px"
+																height="40px"
+																fill="#000000"
+															>
+																<path d="M419.3 264.8l-61.8 61.8L542.9 512 357.5 697.4l61.8 61.8L666.5 512z" />
+															</svg>
+														</button>
+													)}
 												</div>
 											}
 										</div>

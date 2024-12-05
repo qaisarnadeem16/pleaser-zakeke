@@ -629,7 +629,7 @@ const MobileMenu = () => {
 
 													{/* Options List */}
 													<div
-														className="flex gap-4 mx-auto py-1 overflow-x-auto scroll-snap-x no-scrollbar"
+														className="flex gap-4 mx-auto px-2 py-1 overflow-x-auto scroll-snap-x no-scrollbar"
 														onScroll={handleScroll}
 													>
 														{item.options.map((option, i) => (

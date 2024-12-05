@@ -238,6 +238,7 @@ export const MobileItemsContainer: FC<MenuItemsContainerProps> = ({
 	const ref = useRef<HTMLDivElement | null>(null);
 	if (ref.current && scrollLeft != null) ref.current.scrollLeft = scrollLeft ?? 0;
 
+
 	// Update visibility on scroll
 	useEffect(() => {
 		const handleScroll = () => {

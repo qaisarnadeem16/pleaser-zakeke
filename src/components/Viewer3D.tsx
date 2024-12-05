@@ -536,11 +536,12 @@ const Viewer3D = () => {
 								price > 0 &&
 								(!sellerSettings || !sellerSettings.hidePrice) && ( */}
 						<PriceContainer style={{ fontSize: '18px', color: 'black', display: 'flex', }} $isMobile={isMobile}>
-							<DownArrow style={{
+							{/* <DownArrow style={{
 								height: '24px',
 								width: '24px',
 								paddingTop: '4px'
-							}} />{priceFormatter.format(price)}
+							}} /> */}
+							{priceFormatter.format(price)}
 						</PriceContainer>
 						{/* )} */}
 					</FooterPriceIcon>

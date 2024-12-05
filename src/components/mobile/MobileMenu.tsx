@@ -342,11 +342,10 @@ const MobileMenu = () => {
 		const scrollableElement = document.querySelector('.scroll-snap-x');
 		if (scrollableElement) {
 			const { scrollLeft, scrollWidth, clientWidth } = scrollableElement;
-
-			// Check if at the start
+			// Show Left Arrow if not at the start
 			setShowLeftArrow(scrollLeft > 0);
 
-			// Check if at the end
+			// Show Right Arrow if not at the end
 			setShowRightArrow(scrollLeft < scrollWidth - clientWidth);
 		}
 	};
@@ -366,6 +365,8 @@ const MobileMenu = () => {
 			handleOptionSelection(item.options[newIndex]);
 		}
 	};
+
+	
 	// console.log('currentItems', currentItems)
 	// console.log('selectedAttribute', selectedAttribute)
 	// console.log('selectOption', selectedAttribute)

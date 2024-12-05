@@ -342,11 +342,15 @@ const MobileMenu = () => {
 		const scrollableElement = document.querySelector('.scroll-snap-x');
 		if (scrollableElement) {
 			const { scrollLeft, scrollWidth, clientWidth } = scrollableElement;
+
+			// Tolerance margin for precision
+			const tolerance = 2; // Adjust as needed (e.g., 1-5px)
+
 			// Show Left Arrow if not at the start
-			setShowLeftArrow(scrollLeft > 0);
+			setShowLeftArrow(scrollLeft > tolerance);
 
 			// Show Right Arrow if not at the end
-			setShowRightArrow(scrollLeft < scrollWidth - clientWidth);
+			setShowRightArrow(scrollLeft < scrollWidth - clientWidth - tolerance);
 		}
 	};
 
@@ -366,7 +370,7 @@ const MobileMenu = () => {
 		}
 	};
 
-	
+
 	// console.log('currentItems', currentItems)
 	// console.log('selectedAttribute', selectedAttribute)
 	// console.log('selectOption', selectedAttribute)
@@ -607,12 +611,12 @@ const MobileMenu = () => {
 													</div>
 												</MobileItemsContainer>
 												:
-												<div className="max-w-full bg-transparent px-5 flex justify-center items-center relative">
+												<div className="max-w-full bg-transparent px-5 pr-4 flex justify-center items-center relative">
 													{/* Previous Button */}
 													{showLeftArrow && (
 														<button
 															onClick={() => handlePrevious(item)}
-															className="z-10 mb-4 h-6 w-6 bg-slate-100 flex items-center justify-center rounded-full absolute left-2"
+															className="z-10 mb-4 h-6 w-6 bg-slate-100 flex items-center justify-center rounded-full absolute left-1"
 														>
 															<svg
 																xmlns="http://www.w3.org/2000/svg"
@@ -663,7 +667,7 @@ const MobileMenu = () => {
 													{showRightArrow && (
 														<button
 															onClick={() => handleNext(item)}
-															className="z-10 mb-4 h-6 w-6 bg-slate-100 flex items-center justify-center rounded-full absolute right-2"
+															className="z-10 mb-4 h-6 w-6 bg-slate-100 flex items-center justify-center rounded-full absolute right-1"
 														>
 															<svg
 																xmlns="http://www.w3.org/2000/svg"

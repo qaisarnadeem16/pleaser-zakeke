@@ -158,37 +158,37 @@ const Viewer3D = () => {
 
 	const [isFullscreen, setIsFullscreen] = useState(false);
 	const [containerHeight, setContainerHeight] = useState<number | null>(null);
-  
+
 	const switchFullscreenArrows = () => {
-	  if (document.fullscreenElement) {
-		document.exitFullscreen();
-		setIsFullscreen(false);
-	  } else {
-		// Capture the current height of the ViewerContainer
-		const height = ref.current?.offsetHeight;
-		if (height) setContainerHeight(height);
-  
-		ref.current?.requestFullscreen();
-		setIsFullscreen(true);
-	  }
-	};
-  
-	useEffect(() => {
-	  const handleResize = () => {
-		if (isFullscreen && ref.current) {
-		  ref.current.style.height = `${window.innerHeight}px`;
+		const viewerContainer = ref.current;
+
+		if (document.fullscreenElement) {
+			document.exitFullscreen();
+			setTimeout(() => setIsFullscreen(false), 300); 
+		} else {
+			setIsFullscreen(true);
+			setTimeout(() => {
+				viewerContainer?.requestFullscreen();
+			}, 10);
 		}
-	  };
-  
-	  if (isFullscreen) {
-		window.addEventListener('resize', handleResize);
-		handleResize();
-	  } else {
-		window.removeEventListener('resize', handleResize);
-		if (ref.current) ref.current.style.height = 'auto'; // Reset height when exiting fullscreen
-	  }
-  
-	  return () => window.removeEventListener('resize', handleResize);
+	};
+
+	useEffect(() => {
+		const handleResize = () => {
+			if (isFullscreen && ref.current) {
+				ref.current.style.height = `${window.innerHeight}px`;
+			}
+		};
+
+		if (isFullscreen) {
+			window.addEventListener('resize', handleResize);
+			handleResize();
+		} else {
+			window.removeEventListener('resize', handleResize);
+			if (ref.current) ref.current.style.height = 'auto'; // Reset height when exiting fullscreen
+		}
+
+		return () => window.removeEventListener('resize', handleResize);
 	}, [isFullscreen]);
 
 	const handleArClick = async (arOnFlyUrl: string) => {

@@ -161,34 +161,36 @@ const Viewer3D = () => {
 
 	const switchFullscreenArrows = () => {
 		const viewerContainer = ref.current;
-
+	
 		if (document.fullscreenElement) {
-			document.exitFullscreen();
-			setTimeout(() => setIsFullscreen(false), 300);
+			document.exitFullscreen().then(() => {
+				setIsFullscreen(false);
+			});
 		} else {
-			// Preload fullscreen styles
 			setIsFullscreen(true);
-
-			// Delay fullscreen request for smoother transition
-			setTimeout(() => {
-				viewerContainer?.requestFullscreen();
-			}, 50);
+			viewerContainer?.requestFullscreen();
 		}
 	};
 
 
 	useEffect(() => {
-		const handleFullscreenChange = () => {
-		  if (!document.fullscreenElement) {
-			setIsFullscreen(false);
-		  }
+		const handleResize = () => {
+			if (isFullscreen && ref.current) {
+				ref.current.style.height = `${window.innerHeight}px`;
+			}
 		};
-	  
-		document.addEventListener('fullscreenchange', handleFullscreenChange);
-	  
-		return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
-	  }, []);
-	  
+	
+		if (isFullscreen) {
+			window.addEventListener('resize', handleResize);
+			handleResize(); // Set initial height on fullscreen
+		} else {
+			window.removeEventListener('resize', handleResize);
+			if (ref.current) ref.current.style.height = 'auto'; // Reset height when exiting fullscreen
+		}
+	
+		return () => window.removeEventListener('resize', handleResize);
+	}, [isFullscreen]);
+
 	  
 	const handleArClick = async (arOnFlyUrl: string) => {
 		if (IS_ANDROID || IS_IOS) {

@@ -52,6 +52,7 @@ canvas {
 	height: auto;
 	background-color: #f2f2f2;
 	overflow: hidden;
+	will-change: transform, height, width; 
 	transition: all 0.3s ease-in-out; /* Smooth transition */
   }
   

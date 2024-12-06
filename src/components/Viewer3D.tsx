@@ -164,33 +164,32 @@ const Viewer3D = () => {
 
 		if (document.fullscreenElement) {
 			document.exitFullscreen();
-			setTimeout(() => setIsFullscreen(false), 300); 
+			setTimeout(() => setIsFullscreen(false), 300);
 		} else {
+			// Preload fullscreen styles
 			setIsFullscreen(true);
+
+			// Delay fullscreen request for smoother transition
 			setTimeout(() => {
 				viewerContainer?.requestFullscreen();
-			}, 10);
+			}, 50);
 		}
 	};
 
+
 	useEffect(() => {
-		const handleResize = () => {
-			if (isFullscreen && ref.current) {
-				ref.current.style.height = `${window.innerHeight}px`;
-			}
+		const handleFullscreenChange = () => {
+		  if (!document.fullscreenElement) {
+			setIsFullscreen(false);
+		  }
 		};
-
-		if (isFullscreen) {
-			window.addEventListener('resize', handleResize);
-			handleResize();
-		} else {
-			window.removeEventListener('resize', handleResize);
-			if (ref.current) ref.current.style.height = 'auto'; // Reset height when exiting fullscreen
-		}
-
-		return () => window.removeEventListener('resize', handleResize);
-	}, [isFullscreen]);
-
+	  
+		document.addEventListener('fullscreenchange', handleFullscreenChange);
+	  
+		return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+	  }, []);
+	  
+	  
 	const handleArClick = async (arOnFlyUrl: string) => {
 		if (IS_ANDROID || IS_IOS) {
 			setIsLoading(true);

@@ -128,7 +128,6 @@ const Viewer3D = () => {
 		setSelectedStepId,
 	} = useStore();
 
-	const [isFullscreen, setIsFullscreen] = useState(false);
 	const [isRecapPanelOpened, setRecapPanelOpened] = useState(
 		sellerSettings?.isCompositionRecapVisibleFromStart ?? false
 	);
@@ -156,21 +155,41 @@ const Viewer3D = () => {
 			launchFullscreen(ref.current!);
 		}
 	};
-	// const switchFullscreenArrows = () => {
-	// 	if (
-	// 		(document as any).fullscreenElement ||
-	// 		(document as any).webkitFullscreenElement ||
-	// 		(document as any).mozFullScreenElement ||
-	// 		(document as any).msFullscreenElement
-	// 	) {
-	// 		quitFullscreen(ref.current!);
-	// 		setIsFullscreen(false);
-	// 	} else {
-	// 		launchFullscreen(ref.current!);
-	// 		setIsFullscreen(true);
-	// 	}
-	// };
 
+	const [isFullscreen, setIsFullscreen] = useState(false);
+	const [containerHeight, setContainerHeight] = useState<number | null>(null);
+  
+	const switchFullscreenArrows = () => {
+	  if (document.fullscreenElement) {
+		document.exitFullscreen();
+		setIsFullscreen(false);
+	  } else {
+		// Capture the current height of the ViewerContainer
+		const height = ref.current?.offsetHeight;
+		if (height) setContainerHeight(height);
+  
+		ref.current?.requestFullscreen();
+		setIsFullscreen(true);
+	  }
+	};
+  
+	useEffect(() => {
+	  const handleResize = () => {
+		if (isFullscreen && ref.current) {
+		  ref.current.style.height = `${window.innerHeight}px`;
+		}
+	  };
+  
+	  if (isFullscreen) {
+		window.addEventListener('resize', handleResize);
+		handleResize();
+	  } else {
+		window.removeEventListener('resize', handleResize);
+		if (ref.current) ref.current.style.height = 'auto'; // Reset height when exiting fullscreen
+	  }
+  
+	  return () => window.removeEventListener('resize', handleResize);
+	}, [isFullscreen]);
 
 	const handleArClick = async (arOnFlyUrl: string) => {
 		if (IS_ANDROID || IS_IOS) {
@@ -467,10 +486,10 @@ const Viewer3D = () => {
 
 
 	return (
-		<ViewerContainer ref={ref}>
+		<ViewerContainer ref={ref} className={isFullscreen ? 'fullscreen viewer-container' : 'viewer-container'}>
 			{!isSceneLoading && <ZakekeViewer bgColor='#f2f2f2' />}
 
-			{!isSceneLoading && (
+			{!isSceneLoading && !isFullscreen && (
 				<>
 					<FooterMobileContainer $isMobile={isMobile} isQuoteEnable={product?.quoteRule !== null}>
 						{/* {!isDraftEditor &&
@@ -602,7 +621,7 @@ const Viewer3D = () => {
 						)}
 					</BottomRightIcons>
 
-					{/* {!IS_IOS && !isSceneLoading && (
+					{!IS_IOS && !isSceneLoading && (
 						<FullscreenArrowIcon
 							$isMobile={isMobile}
 							className='fullscreen-icon'
@@ -613,7 +632,7 @@ const Viewer3D = () => {
 
 							{isFullscreen ? <ArrowUpSimple /> : <ArrowDownSimple />}
 						</FullscreenArrowIcon>
-					)} */}
+					)}
 					<TopRightIcons $isMobile={isMobile}>
 						{product && product.isAiConfigurationEnabled && isAIEnabled && (
 							<AiIcon

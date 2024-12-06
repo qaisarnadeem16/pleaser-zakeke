@@ -52,7 +52,7 @@ canvas {
 	height: auto;
 	background-color: #f2f2f2;
 	overflow: hidden;
-	transition: all 0.4s ease-in-out; 
+	
   }
   
   .viewer-container.fullscreen {

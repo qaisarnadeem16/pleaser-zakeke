@@ -563,7 +563,7 @@ justify - content: center;
 
 export const FullscreenArrowIcon = styled(Icon) <{ $isMobile?: boolean; }>`
     position: absolute;
-	bottom:5%;
+	bottom:0;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 32px;
@@ -596,8 +596,6 @@ export const FooterMobileIcon = styled.div<{
 	text-transform: uppercase;
 	text-align: center;
 	display: inline-flex;
-	border: none;
-	border-right: 3px #f4f4f4 solid;
 	cursor: pointer;
 	font-weight: bold !important;
 

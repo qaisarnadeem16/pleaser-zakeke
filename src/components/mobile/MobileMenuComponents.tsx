@@ -14,9 +14,9 @@ export const MobileItemContainer = styled.div<{ selected?: boolean }>`
 	min-width: 80px;
 	max-width: 80px;
 	width: 80px;
-	height: 70px;
-	min-height: 70px;
-	max-height: 70px;
+	height: 75px;
+	min-height: 75px;
+	max-height: 75px;
 	flex: 1;
 	display: flex;
 	flex-direction: column;
@@ -94,7 +94,7 @@ export const MenuItemImagesImageWrapper = styled.div`
 
 // Styled component for the label of each menu item
 export const MenuItemLabel = styled.span`
-	font-size: 13px!important;
+	font-size: 10px!important;
 	font-weight: 500;
 	position: relative;
 	/* bottom: 20px; */
@@ -103,6 +103,7 @@ export const MenuItemLabel = styled.span`
 	text-align: center;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	white-space: wrap;
 	/* white-space: nowrap; */
 `;
 
@@ -335,7 +336,7 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
 					))}
 				</MenuItemImagesWrapper>
 			)}
-			{!props.hideLabel && <MenuItemLabel>{props.label?.slice(0, 7)}</MenuItemLabel>}
+			{!props.hideLabel && <MenuItemLabel>{props.label}</MenuItemLabel>}
 		</MobileItemContainer>
 	);
 };

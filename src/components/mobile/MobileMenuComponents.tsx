@@ -168,7 +168,7 @@ interface MenuItemProps {
 const MenuItemsWrapper = styled.div <{ displayFlex?: boolean; height?: number, }>`
 	display: ${(props) => (props.displayFlex ? 'flex' : 'block')};
 	max-width: 100%;
-	min-height: ${(props) => (props.height !== undefined ? `${props.height}px` : '100px')};
+	min-height: ${(props) => (props.height !== undefined ? `${props.height}px` : '85px')};
 	width: 100%;
 	overflow-x: auto;
 	background-color: #ffffff;
@@ -229,7 +229,7 @@ export const MobileItemsContainer: FC<MenuItemsContainerProps> = ({
 	isRightArrowVisible,
 	onScrollChange,
 	displayFlex = true,
-	height = 100,
+	height = 85,
 	scrollLeft
 }) => {
 	const [showLeftArrow, setShowLeftArrow] = useState(false);

@@ -10,7 +10,6 @@ import noImage from '../../assets/images/no_image.png';
 // Styled component for the container of each mobile menu item
 export const MobileItemContainer = styled.div<{ selected?: boolean }>`
 	align-items: center;
-	justify-content: center;
 	min-width: 80px;
 	max-width: 80px;
 	width: 80px;
